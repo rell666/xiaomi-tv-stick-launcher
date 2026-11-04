@@ -22,7 +22,6 @@ called **CleanFrame** (package `home.cleanframe.tv`).
 | Stick | Android | WebView | Notes |
 |---|---|---|---|
 | Xiaomi TV Stick 4K (`MiTV-AYFR0`, codename `soul`) | Android TV 11 | Chrome 156 | The main target. Stock launcher (`com.google.android.tvlauncher`) disabled; CleanFrame is the only launcher. |
-| Xiaomi TV Stick 4K, a second one | Android TV 11 | same build as above | Same setup, on another network |
 | Hugsun HS89 T19-1 (a generic Chinese stick) | Android 14 | 113 | Needed the exact-alarm fix and other app package names for Emby and YouTube (`web/device.js` `ALSO`) |
 
 Other Android TV devices should work as long as they run API 26 or later, and it will probably work on
