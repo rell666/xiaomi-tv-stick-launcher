@@ -1,0 +1,710 @@
+{
+ "source": "Upstream CleanFrame 58ac92a: hand-reviewed fields from app/assets/wallpapers/catalog.js; luminance measured by the Space gallery measure.py (numpy) on app/assets/wallpapers/<id>.jpg, 2026-10-31.",
+ "wallpapers": [
+  {
+   "id": "misty",
+   "sha256": "1adb0054bc55cafcf77257598e91972f54424bfa295e02d3fff8aac731364bda",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "mist"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.1297,
+     "p95": 0.3401,
+     "sd": 0.1007
+    },
+    "tr": {
+     "mean": 0.8099,
+     "p95": 0.8879,
+     "sd": 0.0624
+    },
+    "br": {
+     "mean": 0.2684,
+     "p95": 0.4748,
+     "sd": 0.1287
+    },
+    "col": {
+     "mean": 0.1004,
+     "p95": 0.4164,
+     "sd": 0.1386
+    },
+    "dock": {
+     "mean": 0.1679,
+     "p95": 0.5009,
+     "sd": 0.1789
+    },
+    "all": {
+     "mean": 0.3063,
+     "p95": 0.771,
+     "sd": 0.2659
+    }
+   }
+  },
+  {
+   "id": "cove",
+   "sha256": "153d01ee8b8632f9778abadd8bda01f7eca06686e7ef5fe679372ee0f1184b94",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "light",
+     "br": "mist"
+    },
+    "frostVeil": 0.12,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": true
+   },
+   "m": {
+    "tl": {
+     "mean": 0.1668,
+     "p95": 0.6431,
+     "sd": 0.2081
+    },
+    "tr": {
+     "mean": 0.0704,
+     "p95": 0.2089,
+     "sd": 0.0644
+    },
+    "br": {
+     "mean": 0.0154,
+     "p95": 0.0211,
+     "sd": 0.0153
+    },
+    "col": {
+     "mean": 0.0774,
+     "p95": 0.381,
+     "sd": 0.1351
+    },
+    "dock": {
+     "mean": 0.1141,
+     "p95": 0.4271,
+     "sd": 0.1429
+    },
+    "all": {
+     "mean": 0.0877,
+     "p95": 0.4188,
+     "sd": 0.1433
+    }
+   }
+  },
+  {
+   "id": "forest",
+   "sha256": "ab774c02c23a5e345679a54d5dd179cbfd346d99a172eab07b13d0aae5714677",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.12,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": true
+   },
+   "m": {
+    "tl": {
+     "mean": 0.4161,
+     "p95": 0.5164,
+     "sd": 0.0678
+    },
+    "tr": {
+     "mean": 0.3837,
+     "p95": 0.5348,
+     "sd": 0.0819
+    },
+    "br": {
+     "mean": 0.0169,
+     "p95": 0.0328,
+     "sd": 0.0091
+    },
+    "col": {
+     "mean": 0.1575,
+     "p95": 0.4808,
+     "sd": 0.1606
+    },
+    "dock": {
+     "mean": 0.0331,
+     "p95": 0.0687,
+     "sd": 0.0183
+    },
+    "all": {
+     "mean": 0.1586,
+     "p95": 0.4522,
+     "sd": 0.1554
+    }
+   }
+  },
+  {
+   "id": "valley",
+   "sha256": "9e2ddaeb50b4555db4b3503eed9d1c17b0822c35a64a74042ba9f48ba334c7de",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.12,
+    "listColumn": 3,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.1274,
+     "p95": 0.4648,
+     "sd": 0.1272
+    },
+    "tr": {
+     "mean": 0.2033,
+     "p95": 0.4045,
+     "sd": 0.1214
+    },
+    "br": {
+     "mean": 0.0098,
+     "p95": 0.023,
+     "sd": 0.0087
+    },
+    "col": {
+     "mean": 0.0844,
+     "p95": 0.383,
+     "sd": 0.1226
+    },
+    "dock": {
+     "mean": 0.0434,
+     "p95": 0.1998,
+     "sd": 0.0703
+    },
+    "all": {
+     "mean": 0.1201,
+     "p95": 0.4718,
+     "sd": 0.155
+    }
+   }
+  },
+  {
+   "id": "night",
+   "sha256": "24d8c1c66a5417d7a8b7000fc7eccaedba98913e4eacc4216e2b91229bff36db",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "light",
+     "br": "light"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.039,
+     "p95": 0.051,
+     "sd": 0.0129
+    },
+    "tr": {
+     "mean": 0.0305,
+     "p95": 0.0388,
+     "sd": 0.0137
+    },
+    "br": {
+     "mean": 0.0176,
+     "p95": 0.0393,
+     "sd": 0.012
+    },
+    "col": {
+     "mean": 0.0746,
+     "p95": 0.2498,
+     "sd": 0.0806
+    },
+    "dock": {
+     "mean": 0.1285,
+     "p95": 0.4188,
+     "sd": 0.1323
+    },
+    "all": {
+     "mean": 0.0661,
+     "p95": 0.2025,
+     "sd": 0.0745
+    }
+   }
+  },
+  {
+   "id": "peaks",
+   "sha256": "8e43051a740c9f00b7b07a2b6a7f0b3a0c2d4d4047a300b6c6ccfa35026adb19",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "dark",
+     "br": "mist"
+    },
+    "frostVeil": 0.36,
+    "listColumn": 2,
+    "dockQuiet": true,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.5582,
+     "p95": 0.6814,
+     "sd": 0.0716
+    },
+    "tr": {
+     "mean": 0.8457,
+     "p95": 0.9174,
+     "sd": 0.0656
+    },
+    "br": {
+     "mean": 0.2747,
+     "p95": 0.3535,
+     "sd": 0.045
+    },
+    "col": {
+     "mean": 0.2577,
+     "p95": 0.6486,
+     "sd": 0.2148
+    },
+    "dock": {
+     "mean": 0.2633,
+     "p95": 0.7529,
+     "sd": 0.2054
+    },
+    "all": {
+     "mean": 0.371,
+     "p95": 0.8263,
+     "sd": 0.2494
+    }
+   }
+  },
+  {
+   "id": "bridge",
+   "sha256": "b7037c228f5117be9054a3c545616c9982cbdf26ad96598affd8585f7e98c09f",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "dark",
+     "br": "mist"
+    },
+    "frostVeil": 0.44,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.182,
+     "p95": 0.3524,
+     "sd": 0.0868
+    },
+    "tr": {
+     "mean": 0.858,
+     "p95": 0.9199,
+     "sd": 0.0414
+    },
+    "br": {
+     "mean": 0.2378,
+     "p95": 0.4746,
+     "sd": 0.1233
+    },
+    "col": {
+     "mean": 0.1173,
+     "p95": 0.3424,
+     "sd": 0.1027
+    },
+    "dock": {
+     "mean": 0.2435,
+     "p95": 0.6354,
+     "sd": 0.2099
+    },
+    "all": {
+     "mean": 0.335,
+     "p95": 0.8475,
+     "sd": 0.2856
+    }
+   }
+  },
+  {
+   "id": "ridge",
+   "sha256": "2c64e94f5b5ae6a428b51cdc31773b14e4663be8bc3409231d35799b16dffe93",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.12,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": true
+   },
+   "m": {
+    "tl": {
+     "mean": 0.4261,
+     "p95": 0.5386,
+     "sd": 0.0807
+    },
+    "tr": {
+     "mean": 0.4557,
+     "p95": 0.72,
+     "sd": 0.173
+    },
+    "br": {
+     "mean": 0.0209,
+     "p95": 0.0955,
+     "sd": 0.039
+    },
+    "col": {
+     "mean": 0.144,
+     "p95": 0.4827,
+     "sd": 0.1616
+    },
+    "dock": {
+     "mean": 0.0343,
+     "p95": 0.1525,
+     "sd": 0.0506
+    },
+    "all": {
+     "mean": 0.1954,
+     "p95": 0.6101,
+     "sd": 0.2124
+    }
+   }
+  },
+  {
+   "id": "golden",
+   "sha256": "fc189207dc825251791434972acd281212b7c8b89f5a1e1e2bb4bb776d0f8531",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "mist",
+     "br": "mist"
+    },
+    "frostVeil": 0.3,
+    "listColumn": 2,
+    "dockQuiet": true,
+    "clockMist": true
+   },
+   "m": {
+    "tl": {
+     "mean": 0.4425,
+     "p95": 0.6561,
+     "sd": 0.1254
+    },
+    "tr": {
+     "mean": 0.1347,
+     "p95": 0.2963,
+     "sd": 0.0838
+    },
+    "br": {
+     "mean": 0.1091,
+     "p95": 0.3553,
+     "sd": 0.115
+    },
+    "col": {
+     "mean": 0.2773,
+     "p95": 0.5643,
+     "sd": 0.1668
+    },
+    "dock": {
+     "mean": 0.2881,
+     "p95": 0.5386,
+     "sd": 0.1737
+    },
+    "all": {
+     "mean": 0.2308,
+     "p95": 0.5321,
+     "sd": 0.17
+    }
+   }
+  },
+  {
+   "id": "summit",
+   "sha256": "83ee526af314cb08f125bfd1c473eb20b9e11814289e13ef8e422a15d3dd0f70",
+   "reviewed": {
+    "tone": "dark",
+    "ut": {
+     "tr": "light",
+     "br": "light"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.015,
+     "p95": 0.0195,
+     "sd": 0.0026
+    },
+    "tr": {
+     "mean": 0.0142,
+     "p95": 0.0186,
+     "sd": 0.0026
+    },
+    "br": {
+     "mean": 0.0157,
+     "p95": 0.0242,
+     "sd": 0.0052
+    },
+    "col": {
+     "mean": 0.0382,
+     "p95": 0.0695,
+     "sd": 0.0533
+    },
+    "dock": {
+     "mean": 0.0356,
+     "p95": 0.0542,
+     "sd": 0.0109
+    },
+    "all": {
+     "mean": 0.041,
+     "p95": 0.0934,
+     "sd": 0.0581
+    }
+   }
+  },
+  {
+   "id": "goldcoast",
+   "sha256": "c1e75780b2d8d90f3701921a86713b7987e5864c5bbf01921923fd564b8ac965",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "mist"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 3,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.2857,
+     "p95": 0.3396,
+     "sd": 0.0322
+    },
+    "tr": {
+     "mean": 0.2325,
+     "p95": 0.2728,
+     "sd": 0.0235
+    },
+    "br": {
+     "mean": 0.2423,
+     "p95": 0.4019,
+     "sd": 0.0783
+    },
+    "col": {
+     "mean": 0.2712,
+     "p95": 0.4327,
+     "sd": 0.1142
+    },
+    "dock": {
+     "mean": 0.2134,
+     "p95": 0.3993,
+     "sd": 0.1255
+    },
+    "all": {
+     "mean": 0.2564,
+     "p95": 0.4133,
+     "sd": 0.1053
+    }
+   }
+  },
+  {
+   "id": "sydney",
+   "sha256": "ed5be5f006d1e00ff3179987205a31bf01b4950c48b41e3ff391d583d1254e9c",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "mist"
+    },
+    "frostVeil": 0.44,
+    "listColumn": 3,
+    "dockQuiet": false,
+    "clockMist": true
+   },
+   "m": {
+    "tl": {
+     "mean": 0.7068,
+     "p95": 0.7622,
+     "sd": 0.0364
+    },
+    "tr": {
+     "mean": 0.8174,
+     "p95": 0.8579,
+     "sd": 0.028
+    },
+    "br": {
+     "mean": 0.2176,
+     "p95": 0.5925,
+     "sd": 0.1642
+    },
+    "col": {
+     "mean": 0.3196,
+     "p95": 0.7693,
+     "sd": 0.2919
+    },
+    "dock": {
+     "mean": 0.312,
+     "p95": 0.8557,
+     "sd": 0.2578
+    },
+    "all": {
+     "mean": 0.3991,
+     "p95": 0.8481,
+     "sd": 0.2953
+    }
+   }
+  },
+  {
+   "id": "amber",
+   "sha256": "2cc1e5b708a6e97d7124dcefe5abd364de1b0b63ddd74e91d7efe852b9ce6ebd",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.3107,
+     "p95": 0.336,
+     "sd": 0.0159
+    },
+    "tr": {
+     "mean": 0.5067,
+     "p95": 0.7492,
+     "sd": 0.1184
+    },
+    "br": {
+     "mean": 0.0154,
+     "p95": 0.0504,
+     "sd": 0.0166
+    },
+    "col": {
+     "mean": 0.2019,
+     "p95": 0.3575,
+     "sd": 0.1461
+    },
+    "dock": {
+     "mean": 0.0807,
+     "p95": 0.2459,
+     "sd": 0.0816
+    },
+    "all": {
+     "mean": 0.3005,
+     "p95": 0.8495,
+     "sd": 0.2501
+    }
+   }
+  },
+  {
+   "id": "mint",
+   "sha256": "7fef40b3984ac2cd3a248cd0099a570c55e2d690e068eaac7066ede561f7e252",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.44,
+    "listColumn": 3,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.3525,
+     "p95": 0.4857,
+     "sd": 0.0786
+    },
+    "tr": {
+     "mean": 0.0706,
+     "p95": 0.4891,
+     "sd": 0.1503
+    },
+    "br": {
+     "mean": 0.0121,
+     "p95": 0.0356,
+     "sd": 0.0116
+    },
+    "col": {
+     "mean": 0.5862,
+     "p95": 0.7309,
+     "sd": 0.1511
+    },
+    "dock": {
+     "mean": 0.2644,
+     "p95": 0.722,
+     "sd": 0.3106
+    },
+    "all": {
+     "mean": 0.309,
+     "p95": 0.722,
+     "sd": 0.3049
+    }
+   }
+  },
+  {
+   "id": "alpine",
+   "sha256": "793e33f58cd7161017053888c16b88df51481664bf8f1110cf20c487e8394f26",
+   "reviewed": {
+    "tone": "light",
+    "ut": {
+     "tr": "mist",
+     "br": "light"
+    },
+    "frostVeil": 0.2,
+    "listColumn": 0,
+    "dockQuiet": false,
+    "clockMist": false
+   },
+   "m": {
+    "tl": {
+     "mean": 0.4559,
+     "p95": 0.5273,
+     "sd": 0.0455
+    },
+    "tr": {
+     "mean": 0.4328,
+     "p95": 0.5055,
+     "sd": 0.0438
+    },
+    "br": {
+     "mean": 0.023,
+     "p95": 0.0749,
+     "sd": 0.0508
+    },
+    "col": {
+     "mean": 0.3569,
+     "p95": 0.7268,
+     "sd": 0.2943
+    },
+    "dock": {
+     "mean": 0.0334,
+     "p95": 0.1629,
+     "sd": 0.0615
+    },
+    "all": {
+     "mean": 0.3216,
+     "p95": 0.7089,
+     "sd": 0.2775
+    }
+   }
+  }
+ ]
+}

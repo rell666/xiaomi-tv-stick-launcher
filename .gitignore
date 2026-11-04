@@ -1,0 +1,11 @@
+dist/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.jks
+signing.properties
+__pycache__/
+*.keystore
+*.p12
+*.pem

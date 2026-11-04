@@ -1,0 +1,58 @@
+{
+ "groups": [
+  {
+   "id": "scenery",
+   "builtin": true
+  },
+  {
+   "id": "space",
+   "builtin": true
+  },
+  {
+   "id": "cyberpunk",
+   "builtin": true
+  },
+  {
+   "id": "gholiday1",
+   "name": "Holiday",
+   "created": 1761900000000,
+   "builtin": false
+  },
+  {
+   "id": "gfamily02",
+   "name": "Family",
+   "created": 1761900300000,
+   "builtin": false
+  }
+ ],
+ "photos": [
+  {
+   "group": "gholiday1",
+   "id": "pbeach00001"
+  },
+  {
+   "group": "gholiday1",
+   "id": "psunset0002"
+  },
+  {
+   "group": "space",
+   "id": "pmoon000003"
+  }
+ ],
+ "ignored": [
+  "groups/gholiday1/photos/.pinflight04.tmp",
+  "groups/gholiday1/photos/pnometa0005",
+  "groups/gholiday1/photos/pmissing006",
+  "groups/gholiday1/photos/BAD..ID",
+  "groups/gholiday1/photos/pbadmeta007",
+  "groups/Gbadgroup",
+  "groups/gnojson03"
+ ],
+ "token": {
+  "token": "0123456789abcdef0123456789abcdef",
+  "code": "482913",
+  "group": "gholiday1",
+  "expires": 1761901500000
+ },
+ "note": "Photos are listed by added (ascending), then group order (scenery, space, cyberpunk, then user groups by created), then id. Built-in groups have no group.json; their names (Scenery, Space, Cyberpunk) come from the app. Every reader (UserLibrary.java, wallpaper-groups.js, the upload service) must produce exactly this from R/. See docs/PHOTO-GROUPS.md contract 1."
+}

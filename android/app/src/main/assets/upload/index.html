@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>CleanFrame photos</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="page" id="app">
+  <header>
+    <p class="eyebrow">Adding photos to the TV</p>
+    <h1 id="group-name">Loading…</h1>
+    <p class="sub" id="group-count"></p>
+  </header>
+
+  <p class="error" id="fatal" role="alert" hidden></p>
+
+  <section id="controls">
+    <label class="primary big" id="choose-label" for="choose">Choose photos</label>
+    <input id="choose" type="file" accept="image/*" multiple>
+    <section id="editor" class="card editor" hidden aria-labelledby="ed-title">
+      <h2 id="ed-title">Frame the photo</h2>
+      <p class="sub">Drag to move it, pinch or use the slider to zoom. The TV shows what is inside the frame.</p>
+      <div class="ed-frame" id="ed-frame"><img id="ed-img" alt=""></div>
+      <label class="ed-zoom" for="ed-zoom">Zoom</label>
+      <input id="ed-zoom" type="range" min="0" max="1000" step="1" value="0">
+      <div class="row">
+        <button type="button" id="ed-fit">Whole photo</button>
+        <button type="button" id="ed-fill">Fill the screen</button>
+      </div>
+      <p class="sub ed-note" id="ed-note" aria-live="polite"></p>
+      <div class="row">
+        <button class="primary" type="button" id="ed-send">Send to TV</button>
+        <button type="button" id="ed-skip">Skip</button>
+      </div>
+      <button type="button" class="ed-rest" id="ed-rest" hidden>Send the rest without framing</button>
+    </section>
+    <ul id="queue" class="queue" aria-live="polite"></ul>
+  </section>
+
+  <section>
+    <h2>Photos in this group</h2>
+    <p class="sub" id="empty" hidden>No photos yet.</p>
+    <ul id="photos" class="photos"></ul>
+  </section>
+
+  <section class="group-actions">
+    <button type="button" id="rename-btn">Rename group</button>
+    <button type="button" id="new-btn">New group</button>
+    <form id="name-form" class="name-form" hidden>
+      <label for="name-input" id="name-label">Group name</label>
+      <input id="name-input" type="text" maxlength="24" autocomplete="off" required>
+      <div class="row">
+        <button class="primary" type="submit" id="name-save">Save</button>
+        <button type="button" id="name-cancel">Cancel</button>
+      </div>
+      <p class="error" id="name-error" role="alert" hidden></p>
+    </form>
+  </section>
+</main>
+<script src="/static/crop.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

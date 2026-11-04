@@ -1,0 +1,624 @@
+{
+  "about": "Evidence for every Android package a mark claims in web/app-marks.js (packages: [...]): an app with one of these packages shows that mark by default (web/app-edit.js). tests/app-edit.test.js fails unless every package in app-marks.js is here under the same mark, and every package here is in app-marks.js.",
+  "checked": "2026-11-02",
+  "method": "play: the package's Google Play page (https://play.google.com/store/apps/details?id=<package>, hl=en, gl=GB, else gl=US for US-only apps) answered HTTP 200 with this title and developer; tvScreenshots: the page has a TV form-factor tab (an Android TV build). installed: in the installed-package list of one of the project's sticks (Xiaomi TV Stick 4K or Hugsun HS89) as recorded for this change on 2026-11-02, for packages with no store page.",
+  "notMapped": {
+    "com.skyglass.v2": "An IPTV app on the Xiaomi stick, not Sky's; It was given the IPTV mark by hand. Never map it to sky.",
+    "com.google.android.youtube.tvkids": "YouTube Kids for Android TV (named by APK mirrors), but its Google Play page answers 404 (gl=GB and gl=US): unconfirmed, left out.",
+    "com.bskyb.skygo": "Sky Go (Sky UK Limited) is on Google Play but has no TV build; sky has no Android TV app, so sky is picker-only.",
+    "showtime": "No Showtime app on Google Play (com.showtime.standalone, com.showtime.showtimeanytime, com.cbs.showtime all 404, gl=GB and gl=US); showtime is picker-only.",
+    "smarttube": "SmartTube is not on Google Play (every candidate package 404); its own build declares its package, but none was confirmed on a Play page or a stick, so smarttube is picker-only. Unconfirmed on Google Play: not distributed there (all candidates 404). Source build.gradle (github.com/yuliskov/SmartTube master) declares applicationId org.smarttube.stable (ststable), org.smarttube.beta (stbeta), app.smarttube.fdroid (stfdroid); not verified against an installed copy. Checked 2026-11-02."
+  },
+  "packages": {
+    "com.mb.android": {
+      "mark": "emby",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.mb.android&gl=GB",
+      "title": "Emby for Android",
+      "developer": "Emby Media",
+      "tvScreenshots": true
+    },
+    "tv.emby.embyatv": {
+      "mark": "emby",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=tv.emby.embyatv&gl=GB",
+      "title": "Emby for Android TV",
+      "developer": "Emby Media",
+      "tvScreenshots": true
+    },
+    "com.google.android.youtube.tv": {
+      "mark": "youtube",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.youtube.tv&gl=GB",
+      "title": "YouTube for Android TV",
+      "developer": "Google LLC",
+      "tvScreenshots": true
+    },
+    "com.rockchip.android.youtube.tv": {
+      "mark": "youtube",
+      "evidence": "installed",
+      "where": "Hugsun HS89 (installed package list); Rockchip's own YouTube build, not on Google Play; already youtube in web/device.js ALSO"
+    },
+    "com.google.android.youtube": {
+      "mark": "youtube",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.youtube&gl=GB",
+      "title": "YouTube",
+      "developer": "Google LLC",
+      "tvScreenshots": false
+    },
+    "com.spotify.tv.android": {
+      "mark": "spotify",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.tv.android&gl=GB",
+      "title": "Spotify: Music & Podcasts",
+      "developer": "Spotify AB",
+      "tvScreenshots": true
+    },
+    "com.spotify.music": {
+      "mark": "spotify",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music&gl=GB",
+      "title": "Spotify: Music and Podcasts",
+      "developer": "Spotify AB",
+      "tvScreenshots": false
+    },
+    "com.rumble.battles": {
+      "mark": "rumble",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.rumble.battles&gl=GB",
+      "title": "Rumble: Stream & Watch Videos",
+      "developer": "Rumble Inc",
+      "tvScreenshots": true
+    },
+    "com.netflix.ninja": {
+      "mark": "netflix",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.netflix.ninja&gl=GB",
+      "title": "Netflix",
+      "developer": "Netflix, Inc.",
+      "tvScreenshots": true
+    },
+    "com.netflix.mediaclient": {
+      "mark": "netflix",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.netflix.mediaclient&gl=GB",
+      "title": "Netflix",
+      "developer": "Netflix, Inc.",
+      "tvScreenshots": false
+    },
+    "com.amazon.amazonvideo.livingroom": {
+      "mark": "primevideo",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.amazon.amazonvideo.livingroom&gl=GB",
+      "title": "Prime Video",
+      "developer": "Amazon Mobile LLC",
+      "tvScreenshots": true
+    },
+    "com.amazon.avod.thirdpartyclient": {
+      "mark": "primevideo",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.amazon.avod.thirdpartyclient&gl=GB",
+      "title": "Prime Video",
+      "developer": "Amazon Mobile LLC",
+      "tvScreenshots": false
+    },
+    "com.disney.disneyplus": {
+      "mark": "disneyplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.disney.disneyplus&gl=GB",
+      "title": "Disney+",
+      "developer": "Disney",
+      "tvScreenshots": true
+    },
+    "com.stremio.one": {
+      "mark": "stremio",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.stremio.one&gl=GB",
+      "title": "Stremio",
+      "developer": "Stremio",
+      "tvScreenshots": true
+    },
+    "com.apple.atve.androidtv.appletv": {
+      "mark": "appletv",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.apple.atve.androidtv.appletv&gl=GB",
+      "title": "Apple TV: Shows, Movies & More",
+      "developer": "Apple",
+      "tvScreenshots": true
+    },
+    "com.wbd.stream": {
+      "mark": "hbomax",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.wbd.stream&gl=GB",
+      "title": "HBO Max: Watch Movies & TV",
+      "developer": "WarnerMedia Global Digital Services, LLC",
+      "tvScreenshots": true
+    },
+    "com.tubitv": {
+      "mark": "tubi",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.tubitv&gl=GB",
+      "title": "Tubi: Free Movies & TV",
+      "developer": "Tubi TV",
+      "tvScreenshots": true
+    },
+    "com.apple.android.music": {
+      "mark": "applemusic",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.apple.android.music&gl=GB",
+      "title": "Apple Music",
+      "developer": "Apple",
+      "tvScreenshots": false
+    },
+    "au.net.abc.iview": {
+      "mark": "abciview",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=au.net.abc.iview&gl=GB",
+      "title": "ABC iview: TV Shows & Movies",
+      "developer": "Australian Broadcasting Corporation",
+      "tvScreenshots": false
+    },
+    "com.sbs.ondemand.tv": {
+      "mark": "sbs",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.sbs.ondemand.tv&gl=GB",
+      "title": "SBS On Demand",
+      "developer": "SBS Corporation",
+      "tvScreenshots": false
+    },
+    "com.sbs.ondemand.android": {
+      "mark": "sbs",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.sbs.ondemand.android&gl=GB",
+      "title": "SBS On Demand",
+      "developer": "SBS Corporation",
+      "tvScreenshots": false
+    },
+    "org.jellyfin.androidtv": {
+      "mark": "jellyfin",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.jellyfin.androidtv&gl=GB",
+      "title": "Jellyfin for Android TV",
+      "developer": "Jellyfin",
+      "tvScreenshots": true
+    },
+    "org.jellyfin.mobile": {
+      "mark": "jellyfin",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.jellyfin.mobile&gl=GB",
+      "title": "Jellyfin",
+      "developer": "Jellyfin",
+      "tvScreenshots": false
+    },
+    "com.plexapp.android": {
+      "mark": "plex",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.plexapp.android&gl=GB",
+      "title": "Plex - Discover films & shows",
+      "developer": "Plex, Inc.",
+      "tvScreenshots": true
+    },
+    "org.xbmc.kodi": {
+      "mark": "kodi",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.xbmc.kodi&gl=GB",
+      "title": "Kodi",
+      "developer": "Kodi Foundation",
+      "tvScreenshots": true
+    },
+    "org.videolan.vlc": {
+      "mark": "vlc",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.videolan.vlc&gl=GB",
+      "title": "VLC for Android",
+      "developer": "Videolabs",
+      "tvScreenshots": true
+    },
+    "air.ITVMobilePlayer": {
+      "mark": "itvx",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=air.ITVMobilePlayer&gl=GB",
+      "title": "ITVX",
+      "developer": "ITV PLC",
+      "tvScreenshots": true
+    },
+    "com.channel4.ondemand": {
+      "mark": "channel4",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.channel4.ondemand&gl=GB",
+      "title": "Channel 4",
+      "developer": "Channel 4 Television Corporation",
+      "tvScreenshots": true
+    },
+    "com.bskyb.nowtv.beta": {
+      "mark": "now",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.bskyb.nowtv.beta&gl=GB",
+      "title": "NOW",
+      "developer": "Sky UK Limited",
+      "tvScreenshots": true
+    },
+    "com.cbs.ott": {
+      "mark": "paramountplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.cbs.ott&gl=US",
+      "title": "Paramount+",
+      "developer": "CBS Interactive, Inc.",
+      "tvScreenshots": true
+    },
+    "com.cbs.app": {
+      "mark": "paramountplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.cbs.app&gl=GB",
+      "title": "Paramount+",
+      "developer": "CBS Interactive, Inc.",
+      "tvScreenshots": false
+    },
+    "com.cbs.ca": {
+      "mark": "paramountplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.cbs.ca&gl=GB",
+      "title": "Paramount+",
+      "developer": "ViacomCBS Streaming",
+      "tvScreenshots": true
+    },
+    "com.dazn": {
+      "mark": "dazn",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.dazn&gl=GB",
+      "title": "DAZN - Watch Live Sports",
+      "developer": "DAZN",
+      "tvScreenshots": true
+    },
+    "com.mubi": {
+      "mark": "mubi",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.mubi&gl=GB",
+      "title": "MUBI: Curated Cinema",
+      "developer": "MUBI",
+      "tvScreenshots": true
+    },
+    "com.crunchyroll.crunchyroid": {
+      "mark": "crunchyroll",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.crunchyroll.crunchyroid&gl=GB",
+      "title": "Crunchyroll: Anime Streaming",
+      "developer": "Crunchyroll, LLC",
+      "tvScreenshots": true
+    },
+    "tv.twitch.android.app": {
+      "mark": "twitch",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=tv.twitch.android.app&gl=GB",
+      "title": "Twitch: Live Streaming",
+      "developer": "Twitch Interactive, Inc.",
+      "tvScreenshots": true
+    },
+    "com.google.android.youtube.tvmusic": {
+      "mark": "youtubemusic",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.youtube.tvmusic&gl=GB",
+      "title": "YouTube Music",
+      "developer": "Google LLC",
+      "tvScreenshots": true
+    },
+    "com.google.android.apps.youtube.music": {
+      "mark": "youtubemusic",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music&gl=GB",
+      "title": "YouTube Music",
+      "developer": "Google LLC",
+      "tvScreenshots": false
+    },
+    "com.aspiro.tidal": {
+      "mark": "tidal",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.aspiro.tidal&gl=GB",
+      "title": "TIDAL Music: HiFi sound",
+      "developer": "TIDAL",
+      "tvScreenshots": true
+    },
+    "deezer.android.app": {
+      "mark": "deezer",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=deezer.android.app&gl=GB",
+      "title": "Deezer: Music & Podcast Player",
+      "developer": "Deezer Music",
+      "tvScreenshots": true
+    },
+    "com.google.android.apps.youtube.kids": {
+      "mark": "youtubekids",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.kids&gl=GB",
+      "title": "YouTube Kids",
+      "developer": "Google LLC",
+      "tvScreenshots": false
+    },
+    "com.android.vending": {
+      "mark": "googleplay",
+      "evidence": "installed",
+      "where": "Hugsun HS89 (installed package list); the Play Store system app, which has no store page of its own"
+    },
+    "com.vimeo.android.videoapp": {
+      "mark": "vimeo",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.vimeo.android.videoapp&gl=GB",
+      "title": "Vimeo",
+      "developer": "Vimeo.com, Inc.",
+      "tvScreenshots": false
+    },
+    "com.dailymotion.dailymotion": {
+      "mark": "dailymotion",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.dailymotion.dailymotion&gl=GB",
+      "title": "Dailymotion Video App",
+      "developer": "Dailymotion",
+      "tvScreenshots": true
+    },
+    "com.soundcloud.android": {
+      "mark": "soundcloud",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.soundcloud.android&gl=GB",
+      "title": "SoundCloud: Music & Audio",
+      "developer": "SoundCloud",
+      "tvScreenshots": true
+    },
+    "com.audible.application": {
+      "mark": "audible",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.audible.application&gl=GB",
+      "title": "Audible: Audiobooks & Podcasts",
+      "developer": "Audible, Inc.",
+      "tvScreenshots": false
+    },
+    "au.com.shiftyjelly.pocketcasts": {
+      "mark": "pocketcasts",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts&gl=GB",
+      "title": "Pocket Casts - Podcast App",
+      "developer": "Automattic, Inc",
+      "tvScreenshots": true
+    },
+    "com.valvesoftware.steamlink": {
+      "mark": "steam",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.valvesoftware.steamlink&gl=GB",
+      "title": "Steam Link",
+      "developer": "Valve Corporation",
+      "tvScreenshots": true
+    },
+    "com.valvesoftware.android.steam.community": {
+      "mark": "steam",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.valvesoftware.android.steam.community&gl=GB",
+      "title": "Steam",
+      "developer": "Valve Corporation",
+      "tvScreenshots": false
+    },
+    "com.playstation.remoteplay": {
+      "mark": "playstation",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.playstation.remoteplay&gl=GB",
+      "title": "PS Remote Play",
+      "developer": "PlayStation Mobile Inc.",
+      "tvScreenshots": false
+    },
+    "com.scee.psxandroid": {
+      "mark": "playstation",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.scee.psxandroid&gl=GB",
+      "title": "PlayStation App",
+      "developer": "PlayStation Mobile Inc.",
+      "tvScreenshots": false
+    },
+    "com.nordvpn.android": {
+      "mark": "nordvpn",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.nordvpn.android&gl=GB",
+      "title": "NordVPN – private & secure VPN",
+      "developer": "Nord Security",
+      "tvScreenshots": true
+    },
+    "com.expressvpn.vpn": {
+      "mark": "expressvpn",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.expressvpn.vpn&gl=GB",
+      "title": "ExpressVPN: Fast & Secure VPN",
+      "developer": "ExpressVPN",
+      "tvScreenshots": true
+    },
+    "com.surfshark.vpnclient.android": {
+      "mark": "surfshark",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.surfshark.vpnclient.android&gl=GB",
+      "title": "Surfshark: Fast & Secure VPN",
+      "developer": "Surfshark B.V.",
+      "tvScreenshots": true
+    },
+    "ch.protonvpn.android": {
+      "mark": "protonvpn",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=ch.protonvpn.android&gl=GB",
+      "title": "Proton VPN: Secure & Fast VPN",
+      "developer": "Proton AG",
+      "tvScreenshots": true
+    },
+    "net.mullvad.mullvadvpn": {
+      "mark": "mullvad",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=net.mullvad.mullvadvpn&gl=GB",
+      "title": "Mullvad VPN",
+      "developer": "Mullvad VPN AB",
+      "tvScreenshots": true
+    },
+    "com.fubo.firetv.screen": {
+      "mark": "fubo",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.fubo.firetv.screen&gl=US",
+      "title": "Fubo: Watch Live TV & Sports",
+      "developer": "fuboTV",
+      "tvScreenshots": true
+    },
+    "tv.fubo.mobile": {
+      "mark": "fubo",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=tv.fubo.mobile&gl=GB",
+      "title": "Fubo: Watch Live TV & Sports",
+      "developer": "fuboTV",
+      "tvScreenshots": false
+    },
+    "com.bydeluxe.d3.android.program.starz": {
+      "mark": "starz",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.bydeluxe.d3.android.program.starz&gl=US",
+      "title": "STARZ",
+      "developer": "Starz Entertainment, LLC",
+      "tvScreenshots": true
+    },
+    "bbc.iplayer.android": {
+      "mark": "bbciplayer",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=bbc.iplayer.android&gl=GB",
+      "title": "BBC iPlayer",
+      "developer": "British Broadcasting Corporation",
+      "tvScreenshots": true
+    },
+    "com.channel5.my5": {
+      "mark": "my5",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.channel5.my5&gl=GB",
+      "title": "5 - Channel 5",
+      "developer": "Channel Five",
+      "tvScreenshots": true
+    },
+    "com.britbox.tv": {
+      "mark": "britbox",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.britbox.tv&gl=GB",
+      "title": "BritBox: Brilliant British TV",
+      "developer": "BritBox LLC",
+      "tvScreenshots": false
+    },
+    "com.britbox.us": {
+      "mark": "britbox",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.britbox.us&gl=GB",
+      "title": "BritBox: Brilliant British TV",
+      "developer": "BritBox LLC",
+      "tvScreenshots": false
+    },
+    "tv.pluto.android": {
+      "mark": "plutotv",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=tv.pluto.android&gl=GB",
+      "title": "Pluto TV: Watch Free Movies/TV",
+      "developer": "Pluto, Inc.",
+      "tvScreenshots": true
+    },
+    "com.discovery.dplay": {
+      "mark": "discoveryplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.discovery.dplay&gl=GB",
+      "title": "discovery+ | Stream TV Shows",
+      "developer": "Discovery Digital",
+      "tvScreenshots": true
+    },
+    "com.discovery.discoveryplus.mobile": {
+      "mark": "discoveryplus",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.discovery.discoveryplus.mobile&gl=GB",
+      "title": "discovery+ | Stream TV Shows",
+      "developer": "Discovery Communications LLC",
+      "tvScreenshots": false
+    },
+    "com.amazon.music.tv": {
+      "mark": "amazonmusic",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.amazon.music.tv&gl=GB",
+      "title": "Amazon Music",
+      "developer": "Amazon Mobile LLC",
+      "tvScreenshots": true
+    },
+    "com.amazon.mp3": {
+      "mark": "amazonmusic",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.amazon.mp3&gl=GB",
+      "title": "Amazon Music: Songs & Podcasts",
+      "developer": "Amazon Mobile LLC",
+      "tvScreenshots": false
+    },
+    "ar.tvplayer.tv": {
+      "mark": "tivimate",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=ar.tvplayer.tv&gl=GB",
+      "title": "TiviMate IPTV Player",
+      "developer": "Armobsoft FZE",
+      "tvScreenshots": true
+    },
+    "tv.plex.labs.plexamp": {
+      "mark": "plexamp",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=tv.plex.labs.plexamp&gl=GB",
+      "title": "Plexamp",
+      "developer": "Plex, Inc.",
+      "tvScreenshots": false
+    },
+    "com.microsoft.xboxone.smartglass": {
+      "mark": "xbox",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.microsoft.xboxone.smartglass&gl=GB",
+      "title": "XBOX",
+      "developer": "Microsoft Corporation",
+      "tvScreenshots": false
+    },
+    "com.nvidia.geforcenow": {
+      "mark": "geforcenow",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.nvidia.geforcenow&gl=GB",
+      "title": "GeForce NOW Cloud Gaming",
+      "developer": "NVIDIA",
+      "tvScreenshots": true
+    },
+    "com.limelight": {
+      "mark": "moonlight",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.limelight&gl=GB",
+      "title": "Moonlight Game Streaming",
+      "developer": "Cameron Gutman",
+      "tvScreenshots": true
+    },
+    "com.gaditek.purevpnics": {
+      "mark": "purevpn",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.gaditek.purevpnics&gl=GB",
+      "title": "PureVPN: Secure VPN & Proxy",
+      "developer": "PureVPN",
+      "tvScreenshots": true
+    },
+    "com.esaba.downloader": {
+      "mark": "downloader",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.esaba.downloader&gl=GB",
+      "title": "Downloader by AFTVnews",
+      "developer": "AFTVnews.com",
+      "tvScreenshots": true
+    },
+    "com.lonelycatgames.Xplore": {
+      "mark": "xplore",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.lonelycatgames.Xplore&gl=GB",
+      "title": "X-plore File Manager",
+      "developer": "Lonely Cat Games",
+      "tvScreenshots": true
+    },
+    "com.ionitech.airscreen": {
+      "mark": "airscreen",
+      "evidence": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.ionitech.airscreen&gl=GB",
+      "title": "AirScreen - AirPlay & Cast",
+      "developer": "Ionitech",
+      "tvScreenshots": true
+    }
+  }
+}

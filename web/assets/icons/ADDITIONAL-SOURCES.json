@@ -1,0 +1,332 @@
+[
+  {
+    "icon": "spotify",
+    "source": "https://github.com/simple-icons/simple-icons/blob/develop/icons/spotify.svg",
+    "licence": "CC0-1.0",
+    "note": "Shape unchanged; white fill for launcher."
+  },
+  {
+    "icon": "hbomax",
+    "source": "https://github.com/simple-icons/simple-icons/blob/develop/icons/hbomax.svg",
+    "licence": "CC0-1.0",
+    "note": "Shape unchanged; white fill for launcher."
+  },
+  {
+    "icon": "tubi",
+    "source": "https://github.com/simple-icons/simple-icons/blob/develop/icons/tubi.svg",
+    "licence": "CC0-1.0",
+    "note": "Shape unchanged; white fill for launcher."
+  },
+  {
+    "icon": "emby",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/4d29a35c954699b389a834aacc97dd6e7e74143c/icons/emby.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (116d096), not in upstream CleanFrame. Revision not recorded at import. Verified 2026-10-30: path data is byte-identical to icons/emby.svg at 4d29a35 (the pin used in SOURCES.json), at 521c96f (its last change upstream) and on develop. Shape unchanged; role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "rumble",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/4d29a35c954699b389a834aacc97dd6e7e74143c/icons/rumble.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (116d096), not in upstream CleanFrame. Revision not recorded at import. Verified 2026-10-30: path data is byte-identical to icons/rumble.svg at 4d29a35 (the pin used in SOURCES.json), at ab1438f (its last change upstream) and on develop. Shape unchanged; role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "iptv",
+    "source": "cleanframe-tv original work (2026-11-01), web/assets/icons/iptv.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original mark, not from any third party and not a logo or wordmark: a TV screen with a rabbit-ear antenna and a broadcast symbol (dot and two waves) knocked out of the screen. Drawn for cleanframe-tv on the 24-unit grid of the CleanFrame utility outlines, filled like the brand marks it sits beside, white. Assignable to any app with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "jellyfin",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/jellyfin.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/jellyfin.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "plex",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/plex.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/plex.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "kodi",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/kodi.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/kodi.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "vlc",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/vlcmediaplayer.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/vlcmediaplayer.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "itvx",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/itvx.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/itvx.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "channel4",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/channel4.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/channel4.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "now",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/now.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/now.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "paramountplus",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/paramountplus.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/paramountplus.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "dazn",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/dazn.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/dazn.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "mubi",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/mubi.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/mubi.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "crunchyroll",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/crunchyroll.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/crunchyroll.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "twitch",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/twitch.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/twitch.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "youtubemusic",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/youtubemusic.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/youtubemusic.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "tidal",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/tidal.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/tidal.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "deezer",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/deezer.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/deezer.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "youtubekids",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/youtubekids.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/youtubekids.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "googleplay",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/googleplay.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/googleplay.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "vimeo",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/vimeo.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/vimeo.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "dailymotion",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/dailymotion.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/dailymotion.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "soundcloud",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/soundcloud.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/soundcloud.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "audible",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/audible.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/audible.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "pocketcasts",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/pocketcasts.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/pocketcasts.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "steam",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/steam.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/steam.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "playstation",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/playstation.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/playstation.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "nordvpn",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/nordvpn.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/nordvpn.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "expressvpn",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/expressvpn.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/expressvpn.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "surfshark",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/surfshark.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/surfshark.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "protonvpn",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/protonvpn.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/protonvpn.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "mullvad",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/mullvad.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/mullvad.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "fubo",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/fubo.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/fubo.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "starz",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/starz.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/starz.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "showtime",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/showtime.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/showtime.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "sky",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/2f67e5d1a7e5cba43c79a0ebc00abcd95fb0ea30/icons/sky.svg",
+    "licence": "CC0-1.0",
+    "note": "Added by cleanframe-tv (2026-11-02), not in upstream CleanFrame. Simple Icons release 16.36.0 (tag 16.36.0 = commit 2f67e5d), icons/sky.svg. Shape unchanged (path data byte-identical); role attribute dropped and white fill added for launcher."
+  },
+  {
+    "icon": "bbciplayer",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/bbciplayer.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of BBC iPlayer's app icon on the 24-unit grid. Three BBC blocks with B, B, C knocked out, above the iPlayer play triangle built from three separated bars. Reference looked at: https://play-lh.googleusercontent.com/Y59FPNn1VAviwVbFR4gh8TTAxoCtluxugEToD5HZGmkF-dBSzt63rDFh73Dk5vzqVhRF3ppgdDjvBeY660Zs=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "my5",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/my5.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of My5's app icon on the 24-unit grid. The Channel 5 numeral: flat top bar and stem over an open round bowl. Reference looked at: https://play-lh.googleusercontent.com/BIFuF1REWwo042g9chhbaHgcRD3NBjNtdv62QqH-0lu3XyWMnnVZbxosQSl9UrCFjOyANji93t8LiOxTLXsIDg=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "britbox",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/britbox.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of BritBox's app icon on the 24-unit grid. The stacked lowercase \"brit / box\" wordmark of the app icon, in a geometric sans. Reference looked at: https://play-lh.googleusercontent.com/6vuICNhag-bnY9FcB2X_n93d0sFP8qKcMUK8zlBnHBMrXntUN8wsGTbTuZjDMSfOSiwW3ZbBh_cP2A1Suu2R0A=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "plutotv",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/plutotv.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Pluto TV's app icon on the 24-unit grid. The heavy lowercase \"pluto\" wordmark with the small raised \"tv\" (the icon's black disc dropped). Reference looked at: https://play-lh.googleusercontent.com/nkOA45t6zfpm0CwwAxt_ikVgx7qDkniIfcBbdSwYWcvmNafGyRMmn2Pv6VWEWP83iFIeULocfiLHEPsO0QmKOyk=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "discoveryplus",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/discoveryplus.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of discovery+'s app icon on the 24-unit grid. The discovery \"D\" with the globe overlapping its lower left, separated by a cut line. Reference looked at: https://play-lh.googleusercontent.com/_LlkXMdRweyHVX9h-gQahj2Oy48lWwSGbV2nUkD-5OaI93eD9RoypJauombHoj_tIXKX3SYxugQCVxTfEchRmA=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "amazonmusic",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/amazonmusic.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Amazon Music's app icon on the 24-unit grid. Lowercase \"music\" wordmark over the Amazon smile arrow. Reference looked at: https://play-lh.googleusercontent.com/xQD_ec7KwbrJcrVgeM7BE8D1ih545I0RftIjlhOjUB-cwxXmhl7dhjxQEvcIwtLxDvf9KymiZ7hS7p_QfJy0=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "smarttube",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/smarttube.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of SmartTube's app icon on the 24-unit grid. The rounded TV screen with the S knocked out, over its stand bar. Reference looked at: https://github.com/yuliskov/SmartTube/blob/master/smarttubetv/src/ststable/res/mipmap-nodpi/app_icon.png (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "tivimate",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/tivimate.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of TiviMate's app icon on the 24-unit grid. The stacked \"tivi / mate\" wordmark, \"tivi\" heavier and larger as in the icon. Reference looked at: https://play-lh.googleusercontent.com/lXaMnFHizRDP9eHCRJCMwy9qYS2U9FDvwsNOUO9qappEEfhNzSuC6r2YTC8a-RYQqlCBc_hKiYOH2UXgtuiP=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "plexamp",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/plexamp.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Plexamp's app icon on the 24-unit grid. A horizontal line running through two Plex-style chevrons. Reference looked at: https://play-lh.googleusercontent.com/awnDvLytG8yhYsOM61TdV7EU-FRj8Q52NOhecVzIlUKYFESscJUy0shFddeUu7bYtCs-FFPweyunOGbxoXjbWQ=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "xbox",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/xbox.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Xbox's app icon on the 24-unit grid. The Xbox sphere split by a curved X into left, right, top and bottom pieces. Reference looked at: https://play-lh.googleusercontent.com/zARzhQw-V25X6KCiciynwWtlzOfaS41kx2rZYecxPoY5Z248n-d3lyotuKL0fJYLEvQQ40QNsx8J2VSm2G7RjA=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "geforcenow",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/geforcenow.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of GeForce NOW's app icon on the 24-unit grid. The NVIDIA eye (outer lens, inner band, pupil), inverted where it runs into the box on the right. Reference looked at: https://play-lh.googleusercontent.com/lpJSHUmG-bcaB2oOxSuMhRtE53lZzEUDlEPWLP0on5wM717EuBXAH4Z9nF329QVl9v7-DJTM7CFGeST5qBk=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "moonlight",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/moonlight.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Moonlight's app icon on the 24-unit grid. A full disc cut into eight slices by four thin lines through the centre. Reference looked at: https://play-lh.googleusercontent.com/nZ1sv_1PalwMkR_c1XIBhAa9yr15PSYCLxVx6dogYaoGoj3nPM6ZmG70zv8VF_s2YQs9VwtX3bdxqVvuce6f=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "purevpn",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/purevpn.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of PureVPN's app icon on the 24-unit grid. Outer ring and inner disc with the rounded, downward-pointing triangle knocked out (\"VPN\" text dropped). Reference looked at: https://play-lh.googleusercontent.com/bSjFgygziGYnAFT3Dr7WUZq_KLZpP0XqvJcE10EH-Zvjiqdv_LrUrhvZcq_DfcPlpy0zYA1h6cpBpb-d7sAY9Q=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "downloader",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/downloader.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of Downloader's app icon on the 24-unit grid. The big \"D\" whose stem drops into a down-arrow head at the lower left. Reference looked at: https://play-lh.googleusercontent.com/_zuxP30plNbEBOOre6Q4rVwGQslOX6NCsefA8tPxJFsFt2XLO35yK2YVaPqmFl0oGVnO9FZCJ6b2lhrSk3a0KA=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "xplore",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/xplore.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of X-plore's app icon on the 24-unit grid. A folder at the upper left and the diagonal spanner of the icon (the folder-tree lines dropped). Reference looked at: https://play-lh.googleusercontent.com/ANtuOsdWIW2Z58FWqGfpt9u6Tau7HUox1gVDbtfX2-1pu1MpAyuGszSUq5KqY0iZqQi2GxOcAVdoD0ltW2bSow=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  },
+  {
+    "icon": "airscreen",
+    "source": "cleanframe-tv original work (2026-11-02), web/assets/icons/airscreen.svg in this repository",
+    "licence": "MIT (cleanframe-tv, LICENSES/cleanframe-tv-MIT.txt)",
+    "note": "Original drawing for cleanframe-tv (branch marks-drawn, 30a4ff5), not a copy of the brand's artwork file: a simplified white rendering of AirScreen's app icon on the 24-unit grid. The \"AS\" letters: a crossbar-less A with a foot and a wide geometric S. Reference looked at: https://play-lh.googleusercontent.com/fuKlaML93al-ySt6u73toPmO3gH9_ScrUcpskXtvWyxf4hMjdVikyNByivRPD53huGJjHwqKOk2vDb1MPME1Mg=s0-br30 (its Google Play icon). The brand's name and look remain its owner's trademarks. Assignable with Change icon (web/app-marks.js)."
+  }
+]

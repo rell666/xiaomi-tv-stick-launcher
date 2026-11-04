@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Only for the upload page's listening socket (docs/PHOTO-GROUPS.md contract 4: a phone on the
+         LAN sends photos straight to the stick while Add photo is open). Android has no LAN-only
+         permission. The app opens no outgoing connection (tests/android.test.py fails on any
+         outgoing-connection API) and the WebView blocks network loads behind its origin lock. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Settings > Screen and the Sleep menu (SleepControl): a screen wake lock while something
+         plays; the screen-off timeout (WRITE_SETTINGS, an app-op granted once over adb with
+         `appops set home.cleanframe.tv WRITE_SETTINGS allow`). No device admin (2026-11-01).
+         SYSTEM_ALERT_WINDOW went with the countdown timer's banner (2026-11-01). -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Exact alarms for the playback watch. Android 12+ throws on setExact
+         without one: USE_EXACT_ALARM (13+, granted at install), SCHEDULE_EXACT_ALARM for 12/12L
+         (granted by default there). SleepControl.exact() still falls back to an inexact alarm
+         if neither is held, so a refused alarm never crashes Home (seen on Android 14, 2026-11-01). -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+    <!-- Settings > Bluetooth (MainActivity.bluetooth()): the bonded devices and whether each is
+         connected, read from the adapter and its profile proxies. BLUETOOTH on Android 11 and older
+         (granted at install); BLUETOOTH_CONNECT on 12+, a runtime permission granted once over adb with
+         `pm grant home.cleanframe.tv android.permission.BLUETOOTH_CONNECT` (Home never asks with a
+         dialog). BLUETOOTH_ADMIN on Android 11 and older is only for unpairing headphones and speakers
+         (MainActivity.bluetoothUnpair(); 12+ needs BLUETOOTH_CONNECT for it). No BLUETOOTH_SCAN or
+         location: the app scans for, pairs and connects nothing itself (TV Settings' own page pairs)
+         and opens no Bluetooth socket. -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- The long-press menu's Uninstall (MainActivity, Bridge.uninstall): only to open Android's own
+         confirm dialog with ACTION_DELETE (targetSdk 28+ needs it for that). A normal permission, no dialog
+         of its own, and it removes nothing: the user does, in Android's dialog. -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
+    <!-- Android 11+ package visibility: only launchable apps, not QUERY_ALL_PACKAGES. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:banner="@drawable/banner"
+        android:icon="@drawable/icon"
+        android:label="${appLabel}"
+        android:theme="@style/Home">
+        <!-- WebView would otherwise check URLs with Google Safe Browsing and may send usage
+             metrics; this Home screen serves only its own assets and makes no request of its own. -->
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="false" />
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Its own alarms only (playback check, restore after Sleep now). -->
+        <receiver android:name=".SleepControl" android:exported="false" />
+    </application>
+</manifest>

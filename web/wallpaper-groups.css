@@ -1,0 +1,90 @@
+/* Photo groups (ours; web/wallpaper-groups.js, web/photo-groups.js, docs/PHOTO-GROUPS.md). Loaded
+   after style.css by the patched index.html. Everything reuses CleanFrame's own controls
+   (.setting-choice, .setting-swatch, .setting-tick, .wallpaper-*) so text sizes and focus match;
+   these rules only place them. Stage pixels (1920x1080); the settings panel's left column is
+   140-780, the remote hint sits at 968. */
+
+/* Settings > Background: type as one row, then up to four group rows (the list scrolls), then
+   Rotation, with the disabled reason line still above the remote hint. */
+.detail-background .appearance-rows{top:236px}
+.detail-background .setting-section+.setting-section{margin-top:24px}
+.detail-background .section-bg .setting-choice{min-height:84px;padding-left:24px}
+.detail-background .section-bg .setting-swatch{display:none}
+.detail-background .section-groups .setting-options>*+*{margin-top:0}
+.detail-background .section-groups .setting-choice,.detail-background .section-rotation .setting-choice{min-height:76px}
+.setting-note{color:var(--mute);font-weight:400}
+.setting-choice.is-focus .setting-note{color:var(--solid-mute)}
+.section-groups .setting-copy{flex:1;min-width:0}
+.section-groups .setting-name{overflow:hidden;text-overflow:ellipsis}
+.section-groups .setting-tick{margin-left:12px}
+.setting-swatch.swatch-empty{background:var(--line)}
+.setting-choice.is-focus .swatch-empty{background:var(--solid-mute);opacity:.3}
+.setting-swatch.swatch-add{display:flex;align-items:center;justify-content:center;border:2px dashed currentColor;opacity:.7}
+.setting-swatch.swatch-add .ico{width:28px;height:28px;stroke-width:2}
+.group-more{display:inline-flex;margin-left:12px;vertical-align:middle;color:var(--mute)}
+.group-more .ico{width:24px;height:24px;stroke-width:2}
+
+/* The group page: the old picker with an action row where 3b95ace's group switcher sat. The row
+   sits where the list used to start; the list moves down by one row and still ends above the
+   remote hint (row 244-300, list 340-892, edge arrows 308 and 900). */
+.wallpaper-picker.has-actions{top:244px}
+.group-actions{display:flex;height:56px;white-space:nowrap}
+.setting-choice.group-action{flex:none;width:auto;min-height:56px;padding:8px 22px;border-radius:16px;font-size:28px;line-height:40px;letter-spacing:-.2px;color:var(--mute)}
+.setting-choice.group-action+.group-action{margin-left:8px}
+.setting-choice.group-action.is-current{color:var(--ink)}
+.setting-choice.group-action.is-current::after{content:'';position:absolute;left:20px;right:20px;bottom:4px;height:3px;border-radius:2px;background:currentColor}
+.setting-choice.group-action.is-focus{color:var(--solid-ink)}
+.has-actions .wallpaper-list{margin-top:40px}
+.has-actions .wallpaper-before{top:64px}
+.has-actions .wallpaper-after{top:656px}
+.group-empty{position:absolute;left:24px;top:120px;font-size:36px;line-height:48px;color:var(--mute)}
+.group-empty:empty{display:none}
+.is-removing .wallpaper-choice.is-locked{color:var(--faint)}
+.is-removing .wallpaper-choice.is-locked .wallpaper-thumb{opacity:.45}
+.is-removing .wallpaper-choice.is-removable .setting-tick{display:none}
+.group-question{font-size:32px;line-height:42px;color:var(--ink)}
+.group-confirm-buttons{display:flex;margin-top:12px}
+.setting-choice.group-confirm-button{width:auto;min-width:140px;min-height:60px;justify-content:center;padding:10px 28px;font-size:28px;line-height:36px;border-radius:16px}
+.setting-choice.group-confirm-button+.group-confirm-button{margin-left:12px}
+.group-error,.group-busy{margin-top:12px}
+
+/* Add group / Rename group: one text box, Create/Rename and Cancel. */
+.group-name .name-field{padding:0 24px;min-height:84px;cursor:text}
+.name-input{width:100%;height:60px;border:0;border-bottom:2px solid var(--line);border-radius:0;background:transparent;color:inherit;font:inherit;outline:none;caret-color:currentColor}
+.name-field.is-focus .name-input{border-bottom-color:currentColor}
+.name-field.is-typing{box-shadow:0 0 0 3px var(--ink)}
+.name-error{min-height:36px}
+.name-buttons{display:flex;margin-top:24px}
+.setting-choice.name-button{width:auto;min-width:200px;min-height:72px;justify-content:center;padding:10px 32px;font-size:32px;line-height:40px}
+.setting-choice.name-button+.name-button{margin-left:12px}
+
+/* Add photo: the QR code on white, the address, the 6-digit code, the live count, Done. */
+.upload-screen{top:236px}
+.upload-qr-plate{width:320px;height:320px;border-radius:24px;overflow:hidden;background:#fff}
+.upload-qr-plate.is-empty{background:var(--line)}
+.upload-qr-plate.is-empty .upload-qr{visibility:hidden}
+.upload-qr{display:block;width:320px;height:320px}
+.upload-scan{margin-top:20px;font-size:26px;line-height:36px;color:var(--mute)}
+.upload-base{font-size:34px;line-height:44px;color:var(--ink);white-space:nowrap}
+.upload-code{margin-top:8px;font-size:44px;line-height:56px;font-weight:600;letter-spacing:4px;color:var(--ink)}
+.upload-code-label{font-size:26px;font-weight:400;letter-spacing:0;color:var(--mute)}
+.upload-added{margin-top:12px;font-size:28px;line-height:36px;color:var(--ink)}
+.upload-count,.upload-preparing{display:block}
+.upload-preparing:not(:empty){margin-top:4px;font-size:26px;line-height:34px;color:var(--mute)}
+.upload-base.is-long{max-width:520px;font-size:24px;line-height:32px;white-space:normal;word-break:break-all}
+.upload-base.is-detail{max-width:520px;font-size:28px;line-height:36px;white-space:normal;color:var(--mute)}
+.upload-scan.is-network{font-size:34px;line-height:44px;font-weight:600}
+.upload-buttons{display:flex;margin-top:20px}
+.setting-choice.upload-button{width:auto;min-width:200px;min-height:68px;justify-content:center;padding:10px 32px;font-size:32px;line-height:40px}
+.setting-choice.upload-button+.upload-button{margin-left:12px}
+
+/* Both screens keep the Home preview on the right, as the Background page does. */
+.at-groupname .sheet,.at-upload .sheet{z-index:1}
+.at-groupname .scene,.at-upload .scene{z-index:2;transform:translate3d(858px,288px,0) scale(.48);border-radius:32px;pointer-events:none}
+.at-groupname .plate.on-sel,.at-upload .plate.on-sel{opacity:.5;background:var(--plate);box-shadow:var(--plate-edge)}
+/* Background's Rotation row carries a tick while rotating, at the right like the groups' ticks. */
+.section-rotation .setting-copy{flex:1;min-width:0}
+.section-rotation .setting-tick{margin-left:12px}
+/* While Rotation is on no photo is ticked (2026-11-03): the one on screen says so, quietly. */
+.wallpaper-choice.is-showing .setting-name::after{content:' · Now showing';color:var(--mute);font-weight:400;font-size:26px}
+.wallpaper-choice.is-showing.is-focus .setting-name::after{color:var(--solid-mute)}

@@ -1,0 +1,43 @@
+/* cleanframe-tv additions to CleanFrame's Home (web/home-extras.js). */
+/* Settings lists nine groups since Bluetooth was added (2026-11-03): upstream's 112 px rows (six fit
+   between the title and the hint, 212-968 px) shrink to 82 px and the list starts at 168 px, 32 px
+   under the title (72 + 64), so all nine end at 938 px, above the hint at 968. */
+.settings-overview{top:168px}
+.settings-overview .settings-group{height:82px;padding-top:3px;padding-bottom:3px}
+.settings-overview .settings-group+.settings-group{margin-top:4px}
+.settings-overview .settings-group-name{line-height:42px}
+.settings-overview .settings-group-value{line-height:30px}
+/* Settings > Screen: the dim layer over Home (above every panel; it takes no input). */
+.cf-dim{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;opacity:0;pointer-events:none;transition:opacity 1.2s ease;z-index:2147483000}
+.cf-dim.is-on{opacity:.72}
+/* Sleep now: Home goes black at once while Android's short timeout turns the screen off. */
+.cf-dim.is-on.is-asleep{opacity:1;transition-duration:.4s}
+/* Rename app and Change icon (web/app-edit.js): drawn in the settings panel like Rename group, with
+   the Home preview on the right. Rename reuses Rename group's text box and buttons (.group-name). */
+.at-appname .sheet,.at-appicon .sheet{z-index:1}
+.at-appname .scene,.at-appicon .scene{z-index:2;transform:translate3d(858px,288px,0) scale(.48);border-radius:32px;pointer-events:none}
+.at-appname .plate.on-sel,.at-appicon .plate.on-sel{opacity:.5;background:var(--plate);box-shadow:var(--plate-edge)}
+.app-name .setting-choice.name-button{min-width:0;padding:10px 26px}
+.app-name-own{color:var(--mute)}
+/* Change icon: four columns of choices (154 x 150, the mark at the dock tile's 120 x 72), four rows
+   visible (244-868, above the remote hint at 968); more rows scroll a row at a time. */
+.app-icons .app-icon-view{position:relative;width:640px;height:624px;overflow:hidden}
+.app-icon-grid{position:absolute;left:0;top:0;width:640px;transition:transform 200ms var(--ease)}
+.setting-choice.app-icon-choice{position:absolute;display:block;width:154px;min-height:0;height:150px;padding:0;border-radius:20px}
+.app-icon-choice.is-off{visibility:hidden}
+.app-icon-mark{position:absolute;left:17px;top:14px;width:120px;height:72px;color:var(--ink)}
+.app-icon-choice.is-focus .app-icon-mark{color:var(--solid-ink)}
+/* Up to two lines ("App's own icon", "YouTube Music"), centred under the mark, across the tile's full
+   width less 4px a side: 146px holds AppEdit.LABEL_LINE (12) characters a line, LABEL_LINES (2) lines
+   (tests/app-edit.test.js). The upstream gap between a setting row's children (.setting-choice>*+*,
+   16px) is not for these absolutely placed parts: it took 16px off the name and pushed it off-centre. */
+.setting-choice.app-icon-choice>*+*{margin-left:0}
+.app-icon-name{position:absolute;left:4px;right:4px;top:88px;height:58px;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:26px;font-weight:500;letter-spacing:-.2px;text-align:center;white-space:normal;overflow:hidden}
+.app-icon-choice .setting-tick{position:absolute;right:10px;top:8px;width:28px;height:28px;margin:0;visibility:hidden}
+.app-icon-choice .setting-tick .ico{width:28px;height:28px}
+.app-icon-choice.is-applied .setting-tick{visibility:visible}
+.app-icon-error:not(:empty){margin-top:12px}
+/* Settings > Bluetooth (web/bluetooth.js): a device's name on one line (cut with an ellipsis), its
+   state and kind on the line below. Four devices, Pair new device and its note end above the hint. */
+.detail-bluetooth .setting-copy{flex:1;min-width:0}
+.detail-bluetooth .setting-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

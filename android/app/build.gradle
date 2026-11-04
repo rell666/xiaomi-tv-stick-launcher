@@ -1,0 +1,121 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Release signing comes from a keystore outside the repo (see README). Without it the
+// release build is left unsigned and cannot be installed.
+def signingFile = file(System.getenv('CLEANFRAME_SIGNING') ?: "${System.getProperty('user.home')}/.config/cleanframe-tv/signing.properties")
+def signing = new Properties()
+if (signingFile.exists()) signingFile.withInputStream { signing.load(it) }
+
+// Version. In a full git checkout of this repo: versionCode = commit count of HEAD (rises with
+// every commit; the installed app refuses a lower one) and versionName = 0.1.0+<sha12>[-dirty]
+// (install.sh reads the SHA back off the stick). The count is only meaningful in a full clone,
+// so a shallow clone or a tree without .git (tarball, git archive) refuses to configure unless
+// you set the version yourself:
+//   CLEANFRAME_VERSION_CODE  positive integer; must be higher than the installed app's to update it
+//   CLEANFRAME_VERSION_NAME  optional; default 0.1.0+<sha12>[-dirty] in git, else 0.1.0+nogit
+// Either as environment variables or Gradle properties (-PCLEANFRAME_VERSION_CODE=42).
+// Setting CLEANFRAME_VERSION_CODE also overrides the commit count in a full checkout.
+def versionSetting = { String name ->
+    def v = providers.gradleProperty(name).orElse(providers.environmentVariable(name)).getOrNull()
+    v?.trim() ? v.trim() : null
+}
+// git output, trimmed; null if git failed (non-zero exit) or is not installed.
+def git = { String... args ->
+    try {
+        def run = providers.exec { commandLine(['git'] + args.toList()); ignoreExitValue = true }
+        run.result.get().exitValue == 0 ? run.standardOutput.asText.get().trim() : null
+    } catch (Exception ignored) { null }  // git not installed
+}
+def repoRoot = rootDir.parentFile.canonicalFile
+def gitTop = git('rev-parse', '--show-toplevel')
+def inGit = gitTop != null && new File(gitTop).canonicalFile == repoRoot
+def codeOverride = versionSetting('CLEANFRAME_VERSION_CODE')
+def nameOverride = versionSetting('CLEANFRAME_VERSION_NAME')
+// In a git checkout these fail closed: git() returns null on failure, '' only for real empty
+// output, so a failed `git status` must not read as a clean tree (versionName without -dirty).
+def gitSha = null
+def gitDirty = ''
+if (inGit) {
+    gitSha = git('rev-parse', '--short=12', 'HEAD')
+    if (!gitSha) throw new GradleException("cleanframe-tv: 'git rev-parse --short=12 HEAD' failed in ${repoRoot}, " +
+        "so versionName cannot carry the commit SHA. Run 'git status' there to see why.")
+    def status = git('status', '--porcelain')
+    if (status == null) throw new GradleException("cleanframe-tv: 'git status --porcelain' failed in ${repoRoot}, " +
+        "so the build cannot tell a clean tree from a dirty one (versionName would claim a clean commit). " +
+        "Run 'git status' there to see why.")
+    gitDirty = status ? '-dirty' : ''
+}
+
+def appVersionCode
+if (codeOverride != null) {
+    if (!(codeOverride ==~ /[1-9][0-9]{0,9}/) || codeOverride.toLong() > 2100000000L)
+        throw new GradleException("CLEANFRAME_VERSION_CODE must be an integer from 1 to 2100000000, got '${codeOverride}'")
+    appVersionCode = codeOverride.toInteger()
+} else if (!inGit) {
+    throw new GradleException("cleanframe-tv: ${repoRoot} is not a git checkout of this repo (no .git, e.g. a tarball or git archive), " +
+        "so versionCode cannot come from the commit count. Build from a full git clone, or set CLEANFRAME_VERSION_CODE " +
+        "(environment or -PCLEANFRAME_VERSION_CODE=N) to a number higher than the installed app's.")
+} else if (git('rev-parse', '--is-shallow-repository') == 'true') {
+    throw new GradleException("cleanframe-tv: ${repoRoot} is a shallow clone, so the commit count (versionCode) would be too low " +
+        "to update an installed app. Run 'git fetch --unshallow', or set CLEANFRAME_VERSION_CODE " +
+        "(environment or -PCLEANFRAME_VERSION_CODE=N) to a number higher than the installed app's.")
+} else {
+    def count = git('rev-list', '--count', 'HEAD')
+    if (!count) throw new GradleException("cleanframe-tv: 'git rev-list --count HEAD' failed in ${repoRoot} (no commits?)")
+    appVersionCode = count.toInteger()
+}
+def appVersionName = nameOverride ?: "0.1.0+${gitSha ?: 'nogit'}${gitDirty}"
+
+android {
+    namespace 'home.cleanframe.tv'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'home.cleanframe.tv'
+        minSdk 26
+        targetSdk 34
+        versionCode appVersionCode
+        versionName appVersionName
+        manifestPlaceholders = [appLabel: 'CleanFrame']
+    }
+
+    signingConfigs {
+        release {
+            if (signing['storeFile']) {
+                storeFile file(signing['storeFile'])
+                storePassword signing['storePassword']
+                keyAlias signing['keyAlias']
+                keyPassword signing['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (signing['storeFile']) signingConfig signingConfigs.release
+        }
+        // Side-by-side test build: its own package, same key and versionName, and no HOME
+        // intent-filter (src/staging/AndroidManifest.xml removes it), so installing it never
+        // touches the live Home or brings up Android's Home chooser. ./build.sh --staging
+        staging {
+            initWith release
+            applicationIdSuffix '.staging'
+            manifestPlaceholders = [appLabel: 'CleanFrame (staging)']
+            matchingFallbacks = ['release']
+        }
+    }
+
+    sourceSets {
+        // web/ is the page (served at https://cleanframe.local/home/); src/main/assets/upload/ is the
+        // phone's upload page (served by UploadServer on the LAN while Add photo is open).
+        main.assets.srcDirs = ['../../web', 'src/main/assets']
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
