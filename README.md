@@ -110,6 +110,7 @@ adb -s <stick> shell settings put global private_dns_mode opportunistic
 | `tools/devtools-eval.mjs` | Evaluate JS in the page on the stick through WebView DevTools over ADB. Needs Node 22+ (its global `WebSocket`) |
 | `tests/` | Offline tests, all run by `check.py` (found automatically; no device, no network). Each test's header says what it covers. Every entry is classified in `tools/rollback.sh`: `APP_TESTS` test `android/`, `web/` and the patch tool and are rolled back with them; `HEAD_TESTS` test `build.sh`, `install.sh`, `tools/*.sh`, `tools/check.py` and `tools/icon_metrics.py`, which a rollback keeps. `tests/tools.test.sh` fails on an unclassified test. Needs `node` and a JDK 17 (`$JAVA_HOME`, else `~/android-toolchain/jdk17`, else `javac`/`java` on `PATH`) for `tests/fallback.test.sh` + `tests/java/` |
 | `tools/stick-lib.sh` | `--recovery` and `--reboot` modes of the stick test |
+| `tools/stick-setup.sh`, `tools/stick-apps.tsv` | Stick setup: Android's privacy settings, and which apps to keep, disable or remove (README "Stick setup") |
 | `tools/adb-lib.sh` | The one copy of the adb helpers (`adbt`, `a`, `first`, `homepkg`, `top`, `stickid`, `ui`), sourced by `install.sh` and `tools/stick-test.sh` |
 | `docs/REVIEW.md` | Code review rubric: metrics, score anchors, evidence rules, reviewer prompt |
 | `tools/stick-test.sh` | Drives Home (opens All apps and the appearance panel, checks Home closes each), D-pad, OK (must open the focused app), Back, All apps, the Home additions (clock, Settings > Screen, dim, Sleep after set from the Sleep button and put back, Sleep now cancelled by a key, long press, Rename and Change icon on a dock app by remote and put back, Uninstall's menu item and Android's dialog, opened and left by Back only, never confirmed) and the Back-hold list on the stick; checks HOME still resolves to CleanFrame; PASS/FAIL per check, exits non-zero on any failure; `--staging` tests the staging app and writes the promotion marker; `--recovery [--slow]` (staging only) checks the native fallback: memory drops, crashes, Home retry, Try again, Back-hold, start guard; `--reboot` reboots the stick and checks it comes back to CleanFrame |
@@ -420,6 +421,41 @@ Signing-key backup, on request only: `tools/backup-signing-key.sh` → `<dest>/<
 there makes it refuse unless that path is mounted); with neither it refuses. Newest 3 kept, each one
 restore-compared before it counts. Restore: `tar -xzf <run>/cleanframe-tv-signing.tar.gz -C ~`
 (this overwrites the live key in `~/.config/cleanframe-tv/`). The archive is not encrypted, so keep it somewhere private.
+
+## Stick setup
+
+A release install (`install.sh` of a release APK) also sets the stick up. A staging install changes neither.
+
+**Privacy, every time, no questions.** These go off and are read back: crash reports, assisted GPS, Wi-Fi and
+Bluetooth scanning for location, Wi-Fi wakeup, network recommendations, sending unknown apps to Google, what the
+assistant may read from the screen, location and backup. Play Protect and voice search stay on (YouTube uses voice
+search). **Usage & diagnostics and Ads personalisation cannot be changed over adb**: turn those off with the
+remote, in Settings > Privacy.
+
+**Apps, once.** The first release install in a terminal asks about each app, and `--setup` asks again:
+
+```sh
+STICK=<host:port> ./install.sh dist/cleanframe-tv-<sha>.apk --make-home --setup
+```
+
+`k` keeps, `d` disables, `r` removes (installed apps only, and its data goes too); Enter takes the choice in capitals.
+You confirm the whole list with `yes` before anything changes. Known apps come from `tools/stick-apps.tsv`, then the
+stick's other installed apps; other system apps are not offered, and neither is anything in `PROTECTED`
+in `tools/stick-setup.sh`. With no terminal it does not ask and says so.
+
+**Undo.** `dist/setup-<stick>.undo` records every old value and app.
+`STICK=<host:port> tools/stick-setup.sh --undo` puts them back, all of them, settings and apps together; a removed app
+must be installed again from the store. Each step also runs by itself: `--privacy`, `--apps`.
+
+**What to know.**
+
+- Run it on a stick nobody is watching: the install restarts Home, and `--make-home` presses Home.
+- A disabled or removed app's dock tile stays until you remove it from Home.
+- Other system apps stay out of the questions because a wrong one can stop a stick working. To offer one, add a line
+  to `tools/stick-apps.tsv` (package, `keep` or `disable`, a short note).
+- Each setting is read back when it is set, not watched afterwards. Once, after a reboot on a Xiaomi TV Stick 4K, crash
+  reports read on again; it did not happen on the next reboot, and the cause is unknown. The next release install
+  turns it off again, or run `--privacy`.
 
 ## Photo uploads (straight to the stick)
 

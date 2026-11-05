@@ -150,6 +150,10 @@ Read these before changing anything here. Later code comments cite them by numbe
    older commit cannot be reinstalled: the stick refuses an older `versionCode` (the commit count;
    user build, app not debuggable), and `install.sh` refuses it first. Uninstalling to get round
    that wipes the saved layout — last resort only.
+   **Stick setup is part of a release install** (`tools/stick-setup.sh`, README "Stick setup"): privacy settings
+   every time, the app questions once. It runs before Home is set, and a failure still ends through the Home checks.
+   A staging install never runs it. It never offers `PROTECTED`, never removes a system app, changes no app before
+   the typed `yes`, and records every change for `--undo`; `tests/stick-setup.test.sh` holds it to that.
 7. **Scored reviews follow `docs/REVIEW.md`** (rubric, evidence rules, reviewer prompt). A score
    is quoted with its rubric version and commit; scores from before rubric v1 are each
    reviewer's own judgement and are not comparable.

@@ -3,6 +3,7 @@
 # Usage: ./install.sh dist/cleanframe-tv-<sha>-staging.apk              staging build (never Home)
 #        ./install.sh dist/cleanframe-tv-<sha>.apk [--make-home]        release build (the live Home)
 #        ./install.sh dist/cleanframe-tv-<sha>.apk [--make-home] --skip-staging
+#        ./install.sh dist/cleanframe-tv-<sha>.apk [--make-home] --setup      ask about the apps again
 # A staging APK never touches Home. A release APK is the live Home's own package, so installing it
 # REPLACES the running Home in place with or without --make-home; --make-home additionally sets it as
 # the Home activity, presses Home and fails unless Home resolves to it and it is the resumed activity.
@@ -36,6 +37,10 @@
 # Every install also grants what the app cannot ask for itself (Home never shows a dialog): the app-op
 # WRITE_SETTINGS (Sleep after, Sleep now) and, on Android 12+, BLUETOOTH_CONNECT (Settings > Bluetooth).
 # Both are read back; one that did not take fails the install, after the Home checks have run.
+# A release install also sets the stick up (tools/stick-setup.sh, README "Stick setup"): Android's privacy
+# settings go off every time, and it asks which apps to keep the first time in a terminal, or with --setup.
+# It runs before Home is set, because a Xiaomi's stock launcher must be off for CleanFrame to become Home.
+# A staging install changes neither.
 set -euo pipefail
 # The APK argument is read where the caller is, before the cd below: a path that exists from the
 # caller's directory (relative or not) is made absolute; any other is taken from the repo as before
@@ -45,11 +50,11 @@ cd "$(dirname "$0")"
 DONE=0
 on_exit() { local rc=$?; [ $DONE = 1 ] || [ "$rc" = 0 ] || echo "INSTALL_FAIL (exit $rc): no INSTALL_OK; see the error above" >&2; }
 trap on_exit EXIT   # also covers an adb step dying under pipefail, which used to exit silently
-usage() { echo "usage: $0 dist/cleanframe-tv-<sha>[-staging].apk [--make-home] [--skip-staging]" >&2; exit 2; }
+usage() { echo "usage: $0 dist/cleanframe-tv-<sha>[-staging].apk [--make-home] [--skip-staging] [--setup]" >&2; exit 2; }
 [ $# -ge 1 ] || usage
-APK=${APK_ARG:-$1}; shift; MAKE_HOME=0; SKIP_STAGING=0
+APK=${APK_ARG:-$1}; shift; MAKE_HOME=0; SKIP_STAGING=0; SETUP=0
 for arg in "$@"; do
-  case $arg in --make-home) MAKE_HOME=1 ;; --skip-staging) SKIP_STAGING=1 ;; *) usage ;; esac
+  case $arg in --make-home) MAKE_HOME=1 ;; --skip-staging) SKIP_STAGING=1 ;; --setup) SETUP=1 ;; *) usage ;; esac
 done
 S=${STICK:-}
 [ -n "$S" ] || { echo "refusing: set STICK=<host:port>; there is no default stick" >&2; exit 2; }
@@ -62,6 +67,7 @@ command -v timeout >/dev/null || { echo "refusing: no timeout(1) (coreutils) to 
 # adbt, a, first, homepkg, top: tools/adb-lib.sh (shared with tools/stick-test.sh). Timeout switch
 # off: a timeout prints ADB TIMEOUT and fails the call, nothing is logged to a file.
 ADB_TIMEOUT_LOG=
+[ -f tools/stick-setup.sh ] || { echo "refusing: tools/stick-setup.sh is missing; is this a full checkout?" >&2; exit 1; }
 ADB_LIB=$PWD/tools/adb-lib.sh
 [ -f "$ADB_LIB" ] || { echo "refusing: $ADB_LIB is missing (the shared adb helpers); is this a full checkout?" >&2; exit 1; }
 # shellcheck source=tools/adb-lib.sh
@@ -80,7 +86,8 @@ case $PKG in
   home.cleanframe.tv.staging)
     [[ $NAME == *-staging ]] || { echo "refusing: package is $PKG but the file is not named *-staging.apk" >&2; exit 1; }
     WANT=${NAME%-staging}
-    [ $MAKE_HOME = 0 ] || { echo "refusing: a staging APK is never made Home" >&2; exit 1; } ;;
+    [ $MAKE_HOME = 0 ] || { echo "refusing: a staging APK is never made Home" >&2; exit 1; }
+    [ $SETUP = 0 ] || { echo "refusing: --setup is for a release install; a staging install changes nothing on the stick" >&2; exit 1; } ;;
   *) echo "refusing: unexpected package '$PKG' in $APK" >&2; exit 1 ;;
 esac
 [ "${VN#*+}" = "$WANT" ] || { echo "refusing: APK versionName $VN does not match its file name ($WANT)" >&2; exit 1; }
@@ -196,6 +203,17 @@ elif [ "$SDK" -ge 31 ]; then
     GRANT_FAIL+="${GRANT_FAIL:+; }adb -s $S shell pm grant $PKG $BTPERM"
   fi
 fi
+# Stick setup (header). Like the grants, a failure is recorded and the Home checks still run.
+SETUP_FAIL=
+if [ "$PKG" = home.cleanframe.tv ]; then
+  STICK=$S bash tools/stick-setup.sh --privacy || SETUP_FAIL="STICK=$S tools/stick-setup.sh --privacy"
+  ASKED=$(grep -lx apps-asked "dist/setup-$(stickid).undo" 2>/dev/null || true)
+  if [ $SETUP = 1 ] || { [ -t 0 ] && [ -z "$ASKED" ]; }; then
+    STICK=$S bash tools/stick-setup.sh --apps || SETUP_FAIL+="${SETUP_FAIL:+; }STICK=$S tools/stick-setup.sh --apps"
+  elif [ -z "$ASKED" ]; then
+    echo "apps: not asked (no terminal). To choose which apps stay: STICK=$S tools/stick-setup.sh --apps"
+  fi
+fi
 in_front() { [ "$TOP" = "$PKG/.MainActivity" ] || [ "$TOP" = "$PKG/$PKG.MainActivity" ]; }
 NOT_SWITCHED=0
 if [ $MAKE_HOME = 1 ]; then
@@ -246,6 +264,10 @@ if [ $NOT_SWITCHED = 1 ]; then
 fi
 if [ -n "$GRANT_FAIL" ]; then
   echo "GRANT FAILED: the app is installed, but these did not take. fix: $GRANT_FAIL" >&2
+  exit 1
+fi
+if [ -n "$SETUP_FAIL" ]; then
+  echo "SETUP FAILED: the app is installed, but the stick setup did not finish. fix: $SETUP_FAIL" >&2
   exit 1
 fi
 DONE=1

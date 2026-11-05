@@ -274,6 +274,10 @@ case "$1 ${2:-} ${3:-}" in
   "shell appops get") if [ -f "$S/op_$4" ]; then echo "$5: $(st "op_$4"); time=+1s ago"; else echo "No operations."; fi ;;
   "shell pm grant") [ -f "$S/grant_ignored" ] || : > "$S/bt_$4" ;;
   "shell getprop ro.build.version.sdk") st sdk ;;
+  # tools/stick-setup.sh (its own behaviour: tests/stick-setup.test.sh). setup_fails: its first read fails.
+  "shell settings get") [ ! -f "$S/setup_fails" ] || exit 1; if [ "$5" = package_verifier_user_consent ]; then echo -1; else echo 0; fi ;;
+  "shell bmgr enabled") echo "Backup Manager currently disabled" ;;
+  "shell pm list") printf 'package:com.fake.app\n' ;;
   "install -r "*)
     [ ! -f "$S/hang_install" ] || exec "$REAL_SLEEP" 30   # a half-dead connection: no answer
     echo "$3" >> "$S/installed"; p=$(st aapt_pkg)
@@ -344,7 +348,7 @@ TESTED=aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111aaaa1111   # the 
 # stick whose Home is the live CleanFrame at $OTHER; APKs signed by the pinned key.
 fresh() {
   rm -rf "${INST:?}" "${FAKE:?}"/*; cp -a "$TPL" "$INST"; mkdir -p "$INST/dist" "$INST/tools"; cp "$ROOT/install.sh" "$INST/install.sh"
-  cp "$ROOT/tools/adb-lib.sh" "$ROOT/tools/signer-cert.sha256" "$INST/tools/"; echo "$PIN" > "$FAKE/signer"
+  cp "$ROOT/tools/adb-lib.sh" "$ROOT/tools/signer-cert.sha256" "$ROOT/tools/stick-setup.sh" "$ROOT/tools/stick-apps.tsv" "$INST/tools/"; echo "$PIN" > "$FAKE/signer"
   echo 1 > "$FAKE/reachable"; echo home.cleanframe.tv > "$FAKE/home"
   echo home.cleanframe.tv/.MainActivity > "$FAKE/resumed"
   echo 1 > "$FAKE/set_home_works"; : > "$FAKE/adb.log"; echo 34 > "$FAKE/sdk"
@@ -432,6 +436,31 @@ home_kept() { grant_failed && [ "$(cat "$FAKE/home")" = home.cleanframe.tv ]; }
 check install-grants-failure-keeps-home nz "GRANT FAILED" home_kept
 fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
 run_install "dist/cleanframe-tv-$SHA-staging.apk"
+# Stick setup: a release install runs the privacy step every time, a staging install never; no terminal
+# means no app questions unless --setup, whose answers are stdin.
+fresh; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging
+privacy_ran() { ok_and_installed && has "STICK_SETUP_OK --privacy" && has "apps: not asked (no terminal)" && not has "STICK_SETUP_OK --apps"; }
+check install-setup-release-privacy-no-questions 0 "privacy:" privacy_ran
+fresh; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging --setup </dev/null
+setup_asked() { ok_and_installed && has "STICK_SETUP_OK --apps"; }
+check install-setup-flag-asks 0 "Which apps stay?" setup_asked
+fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
+staging_untouched() { ok_and_installed && not has "STICK_SETUP_OK" && not logged "shell settings"; }
+check install-setup-staging-untouched 0 "HOME resolves to: home.cleanframe.tv" staging_untouched
+fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk" --setup
+check install-setup-refused-on-staging nz "refusing: --setup is for a release install" no_ok_no_install
+# A setup that fails still leaves Home right, then fails the install with the command that fixes it.
+fresh; : > "$FAKE/setup_fails"; echo android > "$FAKE/home_after_install"; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging
+setup_failed() { not has_ok && installed && has INSTALL_FAIL && [ "$(cat "$FAKE/home")" = home.cleanframe.tv ]; }
+check install-setup-failure-keeps-home nz "SETUP FAILED" setup_failed
+fresh; rm -f "$INST/tools/stick-setup.sh"; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging
+check install-setup-missing-script-refuses nz "tools/stick-setup.sh is missing" no_ok_no_install
 # An APK path relative to the caller's directory, outside the repo (run_install runs from $T, the
 # repo is $T/inst): read before install.sh's cd, not as a path inside the repo.
 fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11

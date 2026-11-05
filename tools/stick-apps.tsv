@@ -1,0 +1,22 @@
+com.miui.tv.analytics	disable	Xiaomi usage statistics
+com.xiaomi.statistic	disable	Xiaomi usage statistics
+com.google.android.feedback	disable	sends feedback reports to Google
+com.google.android.partnersetup	disable	maker's setup data for Google
+com.mitv.tvhome.atv	disable	Xiaomi promotions on the home screen
+com.mitv.tvhome.michannel	disable	Xiaomi promotions on the home screen
+com.mitv.tvhome.mitvplus	disable	Xiaomi promotions on the home screen
+com.xm.webcontent	disable	Xiaomi web promotions
+com.google.android.tvrecommendations	disable	recommendation rows for the stock home screen
+android.autoinstalls.config.xioami.mibox3	disable	installs the maker's apps by itself
+com.google.android.play.games	disable	Google Play Games
+com.android.printspooler	disable	printing
+com.google.android.tvlauncher	disable	stock home screen; while enabled it beats CleanFrame on a Xiaomi
+com.android.box.tvlauncher	keep	stock home screen, a fallback; CleanFrame is Home without disabling it
+com.netflix.ninja	keep	Netflix
+com.xiaomi.mitv.smartshare	keep	Miracast (Chromecast is separate)
+com.xiaomi.wfdsinkhelperservice	keep	Miracast (Chromecast is separate)
+com.mitv.dream	keep	Xiaomi screensaver
+com.xiaomo.tv.milegal	keep	Xiaomi legal screens
+com.google.android.youtube.tvmusic	keep	YouTube Music
+cm.aptoidetv.pt	keep	Aptoide app store, preinstalled by the seller
+com.chihihgs.store	keep	the seller's app store

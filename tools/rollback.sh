@@ -55,7 +55,7 @@ META=android/gradle/verification-metadata.xml; META_KEPT=0; ROLLED=tools/rolled-
 # read it (wallpaper-groups.test.js, java/UserLibraryTest.java, upload.test.sh), so it comes from the SHA
 # with them (HEAD's, read by an older SHA's tests, refused every rollback to 5681020..849c54e).
 # tests/upload.test.sh + tests/upload/ test the app's own upload server (android/), so they are APP tests.
-HEAD_TESTS=(tests/tools.test.sh tests/check.test.py tests/stick-lib.test.py tests/icon_metrics.test.py tests/build-verification.test.py)
+HEAD_TESTS=(tests/tools.test.sh tests/stick-setup.test.sh tests/check.test.py tests/stick-lib.test.py tests/icon_metrics.test.py tests/build-verification.test.py)
 APP_TESTS=(tests/android.test.py tests/brands.test.py tests/space-wallpapers.test.py tests/cyberpunk-wallpapers.test.py tests/device.test.js tests/fallback.test.sh tests/java tests/gradle.test.py tests/manifest.test.py tests/patch.test.py tests/wallpaper-groups.test.js tests/photo-groups.test.js tests/upload.test.sh tests/upload tests/fixtures tests/materials.test.js tests/home-extras.test.js tests/app-edit.test.js tests/photo-crop.test.js tests/bluetooth.test.js tests/upload-page.test.js)
 in_list() { local x p=$1; shift; for x; do [ "$x" = "$p" ] && return 0; done; return 1; }
 bad=; AT_HEAD=$(git ls-tree --name-only HEAD tests/)   # a git failure stops here (set -e)
