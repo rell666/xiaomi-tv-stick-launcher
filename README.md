@@ -429,8 +429,21 @@ A release install (`install.sh` of a release APK) also sets the stick up. A stag
 **Privacy, every time, no questions.** These go off and are read back: crash reports, assisted GPS, Wi-Fi and
 Bluetooth scanning for location, Wi-Fi wakeup, network recommendations, sending unknown apps to Google, what the
 assistant may read from the screen, location and backup. Play Protect and voice search stay on (YouTube uses voice
-search). **Usage & diagnostics and Ads personalisation cannot be changed over adb**: turn those off with the
-remote, in Settings > Privacy.
+search).
+
+| Setting | What the install does |
+|---|---|
+| The 13 switches above | Turns them off on every release install and reads each one back |
+| Usage & diagnostics | Nothing: turn it off with the remote |
+| Ads personalisation | Nothing: turn it off with the remote |
+
+The last two appear to be stored inside Google Play services, not in Android's settings. No adb setting for them
+was found on the sticks tested, and `adb shell` has no root to reach inside that app. That is what was found, not proof
+that no other way exists. On Android TV they are usually under Settings > Privacy; the menu differs between sticks.
+
+Both pages exist as Google Play services screens on the Xiaomi TV Stick 4K and the Hugsun, so a later version could
+open them during setup, leaving one press of the remote. Pressing the switches by sending key presses would need no
+person, but it could break when Google changes the page. Neither is built.
 
 **Apps, once.** The first release install in a terminal asks about each app, and `--setup` asks again:
 
