@@ -253,6 +253,7 @@ cat > "$BIN/adb" <<'EOF'
 # vn_<pkg>,vc_<pkg>,model,serialno}; aapt_* describe the APK being installed. Every call is logged.
 # set_home_late: the first set-home-activity has no effect; set_home_dies: that call fails (a dropped
 # connection); keys_dead: a key press changes nothing; install_keeps_old: install says Success, nothing changes.
+# sdk: ro.build.version.sdk; appops_ignored, grant_ignored: that grant says nothing wrong but does not take.
 S=$FAKE_STATE; echo "$*" >> "$S/adb.log"
 st() { cat "$S/$1" 2>/dev/null; }
 if [ "$1" = connect ]; then
@@ -267,7 +268,12 @@ case "$1 ${2:-} ${3:-}" in
   "get-state "*) echo device ;;
   "shell dumpsys package")
     p=$4; [ -f "$S/vc_$p" ] || exit 0
-    printf '  Package [%s]\n    versionCode=%s minSdk=21 targetSdk=34\n    versionName=%s\n' "$p" "$(st "vc_$p")" "$(st "vn_$p")" ;;
+    printf '  Package [%s]\n    versionCode=%s minSdk=21 targetSdk=34\n    versionName=%s\n' "$p" "$(st "vc_$p")" "$(st "vn_$p")"
+    [ ! -f "$S/bt_$p" ] || echo "        android.permission.BLUETOOTH_CONNECT: granted=true, flags=[ ]" ;;
+  "shell appops set") [ -f "$S/appops_ignored" ] || echo "$6" > "$S/op_$4" ;;
+  "shell appops get") if [ -f "$S/op_$4" ]; then echo "$5: $(st "op_$4"); time=+1s ago"; else echo "No operations."; fi ;;
+  "shell pm grant") [ -f "$S/grant_ignored" ] || : > "$S/bt_$4" ;;
+  "shell getprop ro.build.version.sdk") st sdk ;;
   "install -r "*)
     [ ! -f "$S/hang_install" ] || exec "$REAL_SLEEP" 30   # a half-dead connection: no answer
     echo "$3" >> "$S/installed"; p=$(st aapt_pkg)
@@ -341,7 +347,7 @@ fresh() {
   cp "$ROOT/tools/adb-lib.sh" "$ROOT/tools/signer-cert.sha256" "$INST/tools/"; echo "$PIN" > "$FAKE/signer"
   echo 1 > "$FAKE/reachable"; echo home.cleanframe.tv > "$FAKE/home"
   echo home.cleanframe.tv/.MainActivity > "$FAKE/resumed"
-  echo 1 > "$FAKE/set_home_works"; : > "$FAKE/adb.log"
+  echo 1 > "$FAKE/set_home_works"; : > "$FAKE/adb.log"; echo 34 > "$FAKE/sdk"
   echo 10 > "$FAKE/vc_home.cleanframe.tv"; echo "0.1+$OTHER" > "$FAKE/vn_home.cleanframe.tv"
   stick_is X
 }
@@ -388,6 +394,44 @@ no_ok_no_install() { not has_ok && not installed; }
 fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
 run_install "dist/cleanframe-tv-$SHA-staging.apk"
 check install-staging-ok 0 "HOME resolves to: home.cleanframe.tv" ok_and_installed
+# The grants the app cannot ask for itself: every install, staging or release, read back off the stick.
+logged() { grep -qF -- "$1" "$FAKE/adb.log"; }
+staging_granted() {
+  ok_and_installed && logged "shell appops set home.cleanframe.tv.staging WRITE_SETTINGS allow" \
+    && logged "shell pm grant home.cleanframe.tv.staging android.permission.BLUETOOTH_CONNECT"
+}
+check install-grants-staging 0 "granted: BLUETOOTH_CONNECT" staging_granted
+fresh; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging
+release_granted() {
+  ok_and_installed && logged "shell appops set home.cleanframe.tv WRITE_SETTINGS allow" \
+    && logged "shell pm grant home.cleanframe.tv android.permission.BLUETOOTH_CONNECT"
+}
+check install-grants-release 0 "granted: WRITE_SETTINGS" release_granted
+# Android 11 has no BLUETOOTH_CONNECT (pm grant would fail on it): the app-op only.
+fresh; echo 30 > "$FAKE/sdk"; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
+no_bt_grant() { ok_and_installed && not logged "shell pm grant" && not has "granted: BLUETOOTH_CONNECT"; }
+check install-grants-android11-no-bluetooth 0 "granted: WRITE_SETTINGS" no_bt_grant
+# Each grant is judged by reading it back, not by the command's exit status, and fails the install.
+grant_failed() { not has_ok && installed && has INSTALL_FAIL; }
+fresh; : > "$FAKE/appops_ignored"; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
+check install-grants-appop-not-taken nz "appops set home.cleanframe.tv.staging WRITE_SETTINGS allow" grant_failed
+fresh; : > "$FAKE/grant_ignored"; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
+check install-grants-bluetooth-not-taken nz "pm grant home.cleanframe.tv.staging android.permission.BLUETOOTH_CONNECT" grant_failed
+# An unreadable SDK level is a failure, not a skip.
+fresh; : > "$FAKE/sdk"; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
+check install-grants-sdk-unreadable nz "could not read the stick's SDK level" grant_failed
+# A failed grant never costs Home: the release that lost Home is still set back, then the install fails.
+fresh; : > "$FAKE/appops_ignored"; echo android > "$FAKE/home_after_install"; apk "cleanframe-tv-$SHA.apk" home.cleanframe.tv "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA.apk" --make-home --skip-staging
+home_kept() { grant_failed && [ "$(cat "$FAKE/home")" = home.cleanframe.tv ]; }
+check install-grants-failure-keeps-home nz "GRANT FAILED" home_kept
+fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11
+run_install "dist/cleanframe-tv-$SHA-staging.apk"
 # An APK path relative to the caller's directory, outside the repo (run_install runs from $T, the
 # repo is $T/inst): read before install.sh's cd, not as a path inside the repo.
 fresh; apk "cleanframe-tv-$SHA-staging.apk" home.cleanframe.tv.staging "0.1+$SHA" 11

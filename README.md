@@ -163,7 +163,7 @@ adb -s <stick> shell settings put global private_dns_mode opportunistic
   Sleep after's again; the saved Sleep after never changes. Nothing shows under the clock. **Settings > Screen**: *Dim after* (Off / 2 /
   5 / 10 / 15 min, default 5) dims Home, the first button press only brightens it; *Sleep after* (Off /
   10 / 30 / 60 min / 2 h, default 30, counted from the dim) is Android's screen-off timeout. Playing
-  audio or video counts as activity. Needs the app-op WRITE_SETTINGS and
+  audio or video counts as activity. Needs the app-op WRITE_SETTINGS (`install.sh` sets it) and
   `stay_on_while_plugged_in=0` on the stick. Samsung settings → **TV
   settings** (Android Settings). Back on Home does nothing (a launcher has nowhere to go back to).
 - **Rotation is random** (2026-11-03): with Settings > Background > Rotation on (*Each time Home
@@ -200,8 +200,8 @@ adb -s <stick> shell settings put global private_dns_mode opportunistic
   devices, `{"ok":true,"on":…,"canUnpair":…,"devices":[{"name","kind":"audio"|"input"|"other","connected","id","unpair"}]}`, connected
   first, never an address (`id` is an opaque token, `BluetoothBonds`); `bluetoothPair()` opens TV Settings' pairing page,
   `com.google.android.intent.action.CONNECT_INPUT`, the only Bluetooth page both sticks resolve. Needs
-  `adb shell pm grant home.cleanframe.tv android.permission.BLUETOOTH_CONNECT` on Android 12+ (the
-  Hugsun; the same for `home.cleanframe.tv.staging`); without it the list says "Bluetooth permission not granted". The app never pairs, connects
+  `BLUETOOTH_CONNECT` on Android 12+ (the Hugsun), which `install.sh` grants for both packages (by hand:
+  `adb shell pm grant home.cleanframe.tv android.permission.BLUETOOTH_CONNECT`); without it the list says "Bluetooth permission not granted". The app never pairs, connects
   or scans itself. `bluetoothUnpair(id)` answers "" or a reason: `BluetoothDevice.removeBond` is not public SDK, so it is
   called by reflection (one lookup, `MainActivity.removeBondMethod()`) with `BLUETOOTH_ADMIN` (Android 11 and older,
   granted at install) or `BLUETOOTH_CONNECT`. A TV that hides the method reports `canUnpair` false: the page offers no

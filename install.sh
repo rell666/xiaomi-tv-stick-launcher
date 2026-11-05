@@ -33,6 +33,9 @@
 # still resolve to home.cleanframe.tv, or the install fails (printing the pm set-home-activity command
 # that fixes it). A release install that lost Home runs that command itself once and re-checks first; so
 # does a --make-home that did not take: every way of ending without Home goes through that one path.
+# Every install also grants what the app cannot ask for itself (Home never shows a dialog): the app-op
+# WRITE_SETTINGS (Sleep after, Sleep now) and, on Android 12+, BLUETOOTH_CONNECT (Settings > Bluetooth).
+# Both are read back; one that did not take fails the install, after the Home checks have run.
 set -euo pipefail
 # The APK argument is read where the caller is, before the cd below: a path that exists from the
 # caller's directory (relative or not) is made absolute; any other is taken from the repo as before
@@ -172,6 +175,27 @@ adbt "$ADB_INSTALL_TIMEOUT" -s "$S" install -r "$APK"
 GOT=$(a shell dumpsys package "$PKG" | sed -n 's/.*versionName=[^+ ]*+\([^ ]*\).*/\1/p' | first | tr -d '\r')
 echo "on stick: $PKG $GOT  wanted: $WANT"
 [ "$GOT" = "$WANT" ] || { echo "PROVENANCE MISMATCH" >&2; exit 1; }
+# Grant before Home is pressed, so the app's first start has them. A failure is only recorded here: the
+# Home checks below must still run, or a failed grant could end the install without Home.
+GRANT_FAIL=
+BTPERM=android.permission.BLUETOOTH_CONNECT
+a shell appops set "$PKG" WRITE_SETTINGS allow || true
+if [[ $(a shell appops get "$PKG" WRITE_SETTINGS | tr -d '\r' | first || true) == "WRITE_SETTINGS: allow"* ]]; then
+  echo "granted: WRITE_SETTINGS"
+else
+  GRANT_FAIL="adb -s $S shell appops set $PKG WRITE_SETTINGS allow"
+fi
+SDK=$(a shell getprop ro.build.version.sdk | tr -d '\r' | first || true)
+if ! [[ $SDK =~ ^[0-9]+$ ]]; then
+  GRANT_FAIL+="${GRANT_FAIL:+; }adb -s $S shell pm grant $PKG $BTPERM (Android 12+ only: could not read the stick's SDK level, got '$SDK')"
+elif [ "$SDK" -ge 31 ]; then
+  a shell pm grant "$PKG" "$BTPERM" || true
+  if [[ $(a shell dumpsys package "$PKG" || true) == *"$BTPERM: granted=true"* ]]; then
+    echo "granted: BLUETOOTH_CONNECT"
+  else
+    GRANT_FAIL+="${GRANT_FAIL:+; }adb -s $S shell pm grant $PKG $BTPERM"
+  fi
+fi
 in_front() { [ "$TOP" = "$PKG/.MainActivity" ] || [ "$TOP" = "$PKG/$PKG.MainActivity" ]; }
 NOT_SWITCHED=0
 if [ $MAKE_HOME = 1 ]; then
@@ -219,6 +243,10 @@ if [ $NOT_SWITCHED = 1 ]; then
     echo "fix: $FIX_HOME (then press Home)" >&2
     exit 1
   fi
+fi
+if [ -n "$GRANT_FAIL" ]; then
+  echo "GRANT FAILED: the app is installed, but these did not take. fix: $GRANT_FAIL" >&2
+  exit 1
 fi
 DONE=1
 echo INSTALL_OK
